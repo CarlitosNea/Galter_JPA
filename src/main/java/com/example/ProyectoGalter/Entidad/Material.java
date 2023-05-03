@@ -1,5 +1,6 @@
 package com.example.ProyectoGalter.Entidad;
 
+import com.example.ProyectoGalter.Entidad.Proveedor;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,7 +20,7 @@ public class Material {
     private Double cant_mate;
 
     @ManyToOne
-    @JoinColumn(name = "nombre_proveedor")
+    @JoinColumn(referencedColumnName = "nombre_proveedor")
     private Proveedor proveedor;
 
 
