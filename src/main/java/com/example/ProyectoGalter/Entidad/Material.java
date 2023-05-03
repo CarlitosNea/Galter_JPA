@@ -20,8 +20,12 @@ public class Material {
     private Double cant_mate;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "nombre_proveedor")
+    @JoinColumn(name = "proveedor",referencedColumnName = "nombre_proveedor")
     private Proveedor proveedor;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "codi_mate")
+    private Material material;
 
 
     // Creacion de constructores

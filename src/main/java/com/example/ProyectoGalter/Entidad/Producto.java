@@ -21,7 +21,7 @@ public class Producto {
     private Double long_prod;
 
     @ManyToOne
-    @JoinColumn(referencedColumnName = "codi_mate")
+    @JoinColumn(name = "material_prod",referencedColumnName = "codi_mate")
     private Material material_prod;
 
     @Column(nullable = false)
