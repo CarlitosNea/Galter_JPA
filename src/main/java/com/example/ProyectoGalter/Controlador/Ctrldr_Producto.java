@@ -1,8 +1,7 @@
 package com.example.ProyectoGalter.Controlador;
 
-import com.example.ProyectoGalter.Entidad.Material;
+
 import com.example.ProyectoGalter.Entidad.Producto;
-import com.example.ProyectoGalter.Servicio.Service_Material;
 import com.example.ProyectoGalter.Servicio.Service_Producto;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
