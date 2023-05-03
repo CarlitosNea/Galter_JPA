@@ -19,7 +19,7 @@ public class Material {
     private Double cant_mate;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "nombre_proveedor")
     private Proveedor proveedor;
 
 
