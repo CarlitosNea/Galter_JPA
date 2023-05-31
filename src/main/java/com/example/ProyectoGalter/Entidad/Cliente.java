@@ -1,26 +1,49 @@
 package com.example.ProyectoGalter.Entidad;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "clientes")
+@Table(name = "cliente")
 public class Cliente {
 
 
     @Id
-    @Column(unique = true,length = 50)
+    @Column(unique = false)
+    private int id_cliente;
+
+    @Column(unique = true, length = 50)
     private String nombre_cliente;
 
+    @Column(unique = true, length = 15)
+    private String telefono_cliente;
 
-    public Cliente(String nombre_cliente) {
+    @Column(unique = true, length = 50)
+    private String representante_cliente;
+
+    @Column(unique = true, length = 50)
+    private String direccion;
+
+
+    public Cliente(int id_cliente, String nombre_cliente, String telefono_cliente, String representante_cliente, String direccion) {
+        this.id_cliente = id_cliente;
         this.nombre_cliente = nombre_cliente;
+        this.telefono_cliente = telefono_cliente;
+        this.representante_cliente = representante_cliente;
+        this.direccion = direccion;
     }
 
+
     public Cliente() {
+    }
+
+
+    public int getId_cliente() {
+        return id_cliente;
+    }
+
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
     public String getNombre_cliente() {
@@ -31,11 +54,39 @@ public class Cliente {
         this.nombre_cliente = nombre_cliente;
     }
 
+    public String getTelefono_cliente() {
+        return telefono_cliente;
+    }
+
+    public void setTelefono_cliente(String telefono_cliente) {
+        this.telefono_cliente = telefono_cliente;
+    }
+
+    public String getRepresentante_cliente() {
+        return representante_cliente;
+    }
+
+    public void setRepresentante_cliente(String representante_cliente) {
+        this.representante_cliente = representante_cliente;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+
     @Override
-    public String
-    toString() {
-        return "clientes{" +
-                "nombre_cliente='" + nombre_cliente + '\'' +
+    public String toString() {
+        return "Cliente{" +
+                "id_cliente=" + id_cliente +
+                ", nombre_cliente='" + nombre_cliente + '\'' +
+                ", telefono_cliente='" + telefono_cliente + '\'' +
+                ", representante_cliente='" + representante_cliente + '\'' +
+                ", direccion='" + direccion + '\'' +
                 '}';
     }
 }

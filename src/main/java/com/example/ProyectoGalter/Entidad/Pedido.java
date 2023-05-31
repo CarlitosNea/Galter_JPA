@@ -2,41 +2,47 @@ package com.example.ProyectoGalter.Entidad;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "pedido")
 public class Pedido {
 
     @Id
-    @Column(unique = true, length = 10)
-    private String id_pedido;
-
-    @Column(unique = true, length = 100)
-    private String cliente;
-
-
-    @Column(unique = true, length = 100)
-    private String producto;
-
-    @Column(unique = true, length = 100)
-    private String usuario;
-
-
-    @Column(unique = false)
-    private int tiempo_pedido;
-
-    @Column(unique = false)
-    private String fecha_encargo;
-
-
-    @Column(unique = false)
-    private String fecha_entrega;
+    @Column(nullable = false)
+    private int id_pedido;
 
     @ManyToOne
-    @JoinColumn(name = "client", referencedColumnName = "id_cliente")
-    private Pedido client;
+    @JoinColumn(name = "cliente", referencedColumnName = "id_cliente")
+    private Pedido cliente;
 
 
-    public Pedido(String id_pedido, String cliente, String producto, String usuario, int tiempo_pedido, String fecha_encargo, String fecha_entrega, Pedido client) {
+    @ManyToOne
+    @JoinColumn(name = "producto", referencedColumnName = "codi_prod")
+    private Producto producto;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario", referencedColumnName = "codi_usuario")
+    private Usuario usuario;
+
+
+    @Column(nullable = false)
+    private int tiempo_pedido;
+
+    @Temporal(TemporalType.DATE)
+    @Column(unique = true)
+    private Date fecha_encargo;
+
+    @Temporal(TemporalType.DATE)
+    @Column(unique = true)
+    private Date fecha_entrega;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id_pedido")
+    private Pedido pedido;
+
+
+    public Pedido(int id_pedido, Pedido cliente, Producto producto, Usuario usuario, int tiempo_pedido, Date fecha_encargo, Date fecha_entrega) {
         this.id_pedido = id_pedido;
         this.cliente = cliente;
         this.producto = producto;
@@ -44,42 +50,41 @@ public class Pedido {
         this.tiempo_pedido = tiempo_pedido;
         this.fecha_encargo = fecha_encargo;
         this.fecha_entrega = fecha_entrega;
-        this.client = client;
     }
 
     public Pedido() {
     }
 
 
-    public String getId_pedido() {
+    public int getId_pedido() {
         return id_pedido;
     }
 
-    public void setId_pedido(String id_pedido) {
+    public void setId_pedido(int id_pedido) {
         this.id_pedido = id_pedido;
     }
 
-    public String getCliente() {
+    public Pedido getCliente() {
         return cliente;
     }
 
-    public void setCliente(String cliente) {
+    public void setCliente(Pedido cliente) {
         this.cliente = cliente;
     }
 
-    public String getProducto() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(String producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 
-    public String getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
@@ -91,41 +96,33 @@ public class Pedido {
         this.tiempo_pedido = tiempo_pedido;
     }
 
-    public String getFecha_encargo() {
+    public Date getFecha_encargo() {
         return fecha_encargo;
     }
 
-    public void setFecha_encargo(String fecha_encargo) {
+    public void setFecha_encargo(Date fecha_encargo) {
         this.fecha_encargo = fecha_encargo;
     }
 
-    public String getFecha_entrega() {
+    public Date getFecha_entrega() {
         return fecha_entrega;
     }
 
-    public void setFecha_entrega(String fecha_entrega) {
+    public void setFecha_entrega(Date fecha_entrega) {
         this.fecha_entrega = fecha_entrega;
     }
 
-    public Pedido getClient() {
-        return client;
-    }
-
-    public void setClient(Pedido client) {
-        this.client = client;
-    }
 
     @Override
     public String toString() {
         return "Pedido{" +
-                "id_pedido='" + id_pedido + '\'' +
-                ", cliente='" + cliente + '\'' +
-                ", producto='" + producto + '\'' +
-                ", usuario='" + usuario + '\'' +
+                "id_pedido=" + id_pedido +
+                ", cliente=" + cliente +
+                ", producto=" + producto +
+                ", usuario=" + usuario +
                 ", tiempo_pedido=" + tiempo_pedido +
                 ", fecha_encargo=" + fecha_encargo +
                 ", fecha_entrega=" + fecha_entrega +
-                ", cliente=" + cliente +
                 '}';
     }
 }

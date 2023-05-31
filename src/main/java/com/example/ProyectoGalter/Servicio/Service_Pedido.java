@@ -33,7 +33,7 @@ public class Service_Pedido {
 
     // Metodo insertar
 
-    public String insertar_pedi(Pedido pedi) {
+    /*public String insertar_pedi(Pedido pedi) {
         if (repositorio.findById(pedi.getId_pedido()).isPresent())
             return "Datos no ingresados";
         else {
@@ -52,7 +52,7 @@ public class Service_Pedido {
         }
         else
             return "Datos mal ingerasados";
-    }
+    }*/
 
 
 

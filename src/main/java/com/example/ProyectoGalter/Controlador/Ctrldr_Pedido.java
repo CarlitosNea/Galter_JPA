@@ -27,7 +27,7 @@ public class Ctrldr_Pedido {
         return servicioPedi.buscar_idPedi(id);
     }
 
-
+/*
     @PostMapping("/insertarPedi")
     public String insertar_Pedi(@RequestBody Pedido pedi){
         return servicioPedi.insertar_pedi(pedi);
@@ -38,7 +38,7 @@ public class Ctrldr_Pedido {
     @PostMapping("/actualizarPedido")
     public String actualizar_Pedi(@RequestBody Pedido pedi){
         return servicioPedi.update_pedi(pedi);
-    }
+    }*/
 
 
 
