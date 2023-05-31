@@ -1,6 +1,6 @@
-package com.example.proyecto_galter.controlador;
-import com.example.proyecto_galter.entidad.Cliente;
-import com.example.proyecto_galter.servicios.Service_Cliente;
+package com.example.ProyectoGalter.Controlador;
+import com.example.ProyectoGalter.Entidad.Cliente;
+import com.example.ProyectoGalter.Servicio.Service_Cliente;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

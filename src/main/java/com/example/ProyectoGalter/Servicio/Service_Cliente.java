@@ -1,9 +1,8 @@
-package com.example.proyecto_galter.servicios;
+package com.example.ProyectoGalter.Servicio;
 
-import com.example.proyecto_galter.entidad.Cliente;
-import com.example.proyecto_galter.repocitorios.Repo_Cliente;
 import org.springframework.stereotype.Service;
-
+import com.example.ProyectoGalter.Entidad.Cliente;
+import com.example.ProyectoGalter.Repositorio.Repo_Cliente;
 import java.util.List;
 
 @Service
