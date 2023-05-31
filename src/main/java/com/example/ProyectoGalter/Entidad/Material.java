@@ -1,9 +1,7 @@
 package com.example.ProyectoGalter.Entidad;
 
-import com.example.ProyectoGalter.Entidad.Proveedor;
 import jakarta.persistence.*;
 
-@Entity
 @Table(name = "material")
 public class Material {
 
