@@ -3,6 +3,7 @@ package com.example.ProyectoGalter.Entidad;
 
 import jakarta.persistence.*;
 
+@Entity
 @Table(name = "proveedor")
 public class Proveedor {
 
@@ -12,9 +13,6 @@ public class Proveedor {
     @Column(unique = true,length = 50)
     private String nombre_proveedor;
 
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "nombre_proveedor")
-    private Proveedor proveedor;
 
 
     // Creacion de constructores

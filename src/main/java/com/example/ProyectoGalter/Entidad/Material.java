@@ -2,6 +2,7 @@ package com.example.ProyectoGalter.Entidad;
 
 import jakarta.persistence.*;
 
+@Entity
 @Table(name = "material")
 public class Material {
 
@@ -21,9 +22,6 @@ public class Material {
     @JoinColumn(name = "proveedor",referencedColumnName = "nombre_proveedor")
     private Proveedor proveedor;
 
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "codi_mate")
-    private Material material;
 
 
     // Creacion de constructores
