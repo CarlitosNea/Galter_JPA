@@ -3,27 +3,26 @@ package com.example.ProyectoGalter.Servicio;
 import com.example.ProyectoGalter.Entidad.Pedido;
 import com.example.ProyectoGalter.Repositorio.Repo_Pedido;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class Service_Pedido {
 
+    // Llamado del repositorio
     private Repo_Pedido repositorio;
-
-    public Service_Pedido(Repo_Pedido repositorio) {
+    public Service_Pedido(Repo_Pedido repositorio){
         this.repositorio = repositorio;
     }
 
 
-    //Metodo listar
-    public List<Pedido> listar_pedi() {
+    // Metodo listar
+    public List<Pedido> listar_Ped(){
         return repositorio.findAll();
     }
 
 
-    //Buscar por codigo
-    public Pedido buscar_idPedi(String id_pedido) {
+    // Buscar por codigo
+    public Pedido buscar_CodigoPed(String id_pedido){
         if (repositorio.findById(id_pedido).isPresent())
             return repositorio.findById(id_pedido).get();
         else
@@ -32,53 +31,35 @@ public class Service_Pedido {
 
 
     // Metodo insertar
-
-    /*public String insertar_pedi(Pedido pedi) {
-        if (repositorio.findById(pedi.getId_pedido()).isPresent())
-            return "Datos no ingresados";
+    public String insertar_Ped(Pedido ped){
+        if (repositorio.findById(ped.getId_pedido()).isPresent())
+            return "Datos mal ingresados";
         else {
-            repositorio.save(pedi);
-            return "Datos ingersados exitosamente";
+            repositorio.save(ped);
+            return "Registrado exitosamente";
         }
     }
 
 
     // Metodo actualizar
-
-    public String update_pedi(Pedido pedi){
-        if (repositorio.findById(pedi.getId_pedido()).isPresent()){
-            repositorio.save(pedi);
-            return "Actualizado correctamente";
+    public String update_Ped(Pedido ped){
+        if (repositorio.findById(ped.getId_pedido()).isPresent()){
+            repositorio.save(ped);
+            return "Actualizado exitosamente";
         }
         else
-            return "Datos mal ingerasados";
-    }*/
+            return "Datos mal ingresados";
 
-
-
-    //Metodo eliminar
-    public String eliminar(String id_pedido){
-        if (repositorio.findById(id_pedido).isPresent()){
-            repositorio.deleteById(id_pedido);
-            return "Eliminado correctamente";
-        }
-        else
-            return "El pedido no existe";
     }
 
 
-
-
+    // Metodo eliminar
+    public String eliminar(String id_pedido){
+        if (repositorio.findById(id_pedido).isPresent()){
+            repositorio.deleteById(id_pedido);
+            return "Eliminado exitosamente";
+        }
+        else
+            return "El material no existe";
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
