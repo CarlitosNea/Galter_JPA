@@ -27,6 +27,11 @@ public class Producto {
     private int prec_prod;
 
 
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "codi_prod")
+    private Producto producto;
+
+
     // Generacion de constructores
     public Producto(String codi_prod, String nomb_prod, int tiempo_prod, Double long_prod, Material material_prod, int prec_prod) {
         this.codi_prod = codi_prod;
