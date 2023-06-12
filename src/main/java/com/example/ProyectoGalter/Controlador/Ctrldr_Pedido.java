@@ -1,64 +1,42 @@
 package com.example.ProyectoGalter.Controlador;
 
-
 import com.example.ProyectoGalter.Entidad.Pedido;
 import com.example.ProyectoGalter.Servicio.Service_Pedido;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 public class Ctrldr_Pedido {
-
-    private Service_Pedido servicioPedi;
-    public Ctrldr_Pedido(Service_Pedido servicioPedi){
-        this.servicioPedi = servicioPedi;
+    private Service_Pedido servicioP;
+    public Ctrldr_Pedido(Service_Pedido servicioP){
+        this.servicioP = servicioP;
     }
 
 
     @GetMapping("/listarPedido")
-    public List<Pedido> listar_Pedi(){
-        return servicioPedi.listar_pedi();
+    public List<Pedido> listar_Ped(){
+        return servicioP.listar_Ped();
     }
 
 
-    @GetMapping("/buscarPedidoId/{id}")
-    public Pedido buscar_idPedido(@PathVariable("id")String id){
-        return servicioPedi.buscar_idPedi(id);
-    }
-
-/*
-    @PostMapping("/insertarPedi")
-    public String insertar_Pedi(@RequestBody Pedido pedi){
-        return servicioPedi.insertar_pedi(pedi);
+    @GetMapping("/buscarPedidoCodigo/{codigo}")
+    public Pedido buscar_CodiPed(@PathVariable("codigo")String id_pedido){
+        return servicioP.buscar_CodigoPed(id_pedido);
     }
 
 
+    @PostMapping("/insertarPedido")
+    public String insertar_Ped(@RequestBody Pedido ped){
+        return servicioP.insertar_Ped(ped);
+    }
 
     @PostMapping("/actualizarPedido")
-    public String actualizar_Pedi(@RequestBody Pedido pedi){
-        return servicioPedi.update_pedi(pedi);
-    }*/
-
-
-
-    @DeleteMapping("/eliminarProducto/{id}")
-    public String eliminar_Pedi(@PathVariable("id")String id){
-        return servicioPedi.eliminar(id);
+    public String actualizar_Ped(@RequestBody Pedido ped){
+        return servicioP.update_Ped(ped);
     }
 
-
+    @DeleteMapping("/eliminarPedido/{codigo}")
+    public String eliminar_Ped(@PathVariable("codigo")String id_pedido){
+        return servicioP.eliminar(id_pedido);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

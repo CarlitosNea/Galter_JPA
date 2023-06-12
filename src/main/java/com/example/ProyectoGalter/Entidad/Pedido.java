@@ -2,20 +2,19 @@ package com.example.ProyectoGalter.Entidad;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "pedido")
 public class Pedido {
 
     @Id
-    @Column(nullable = false)
-    private int id_pedido;
+    @Column(unique = true, length = 10)
+    private String id_pedido;
 
     @ManyToOne
-    @JoinColumn(name = "cliente", referencedColumnName = "id_cliente")
-    private Pedido cliente;
-
+    @JoinColumn(name="cliente",referencedColumnName = "id_cliente")
+    private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "producto", referencedColumnName = "codi_prod")
@@ -25,24 +24,21 @@ public class Pedido {
     @JoinColumn(name = "usuario", referencedColumnName = "codi_usuario")
     private Usuario usuario;
 
-
     @Column(nullable = false)
     private int tiempo_pedido;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    @Column(unique = true)
-    private Date fecha_encargo;
+    private Calendar fecha_encargo;
 
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    @Column(unique = true)
-    private Date fecha_entrega;
-
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "id_pedido")
-    private Pedido pedido;
+    private Calendar fecha_entrega;
 
 
-    public Pedido(int id_pedido, Pedido cliente, Producto producto, Usuario usuario, int tiempo_pedido, Date fecha_encargo, Date fecha_entrega) {
+    // Constructores
+
+    public Pedido(String id_pedido, Cliente cliente, Producto producto, Usuario usuario, int tiempo_pedido, Calendar fecha_encargo, Calendar fecha_entrega) {
         this.id_pedido = id_pedido;
         this.cliente = cliente;
         this.producto = producto;
@@ -56,19 +52,22 @@ public class Pedido {
     }
 
 
-    public int getId_pedido() {
+    // Metodos GET & SET
+
+
+    public String getId_pedido() {
         return id_pedido;
     }
 
-    public void setId_pedido(int id_pedido) {
+    public void setId_pedido(String id_pedido) {
         this.id_pedido = id_pedido;
     }
 
-    public Pedido getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(Pedido cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
@@ -96,27 +95,30 @@ public class Pedido {
         this.tiempo_pedido = tiempo_pedido;
     }
 
-    public Date getFecha_encargo() {
+    public Calendar getFecha_encargo() {
         return fecha_encargo;
     }
 
-    public void setFecha_encargo(Date fecha_encargo) {
+    public void setFecha_encargo(Calendar fecha_encargo) {
         this.fecha_encargo = fecha_encargo;
     }
 
-    public Date getFecha_entrega() {
+    public Calendar getFecha_entrega() {
         return fecha_entrega;
     }
 
-    public void setFecha_entrega(Date fecha_entrega) {
+    public void setFecha_entrega(Calendar fecha_entrega) {
         this.fecha_entrega = fecha_entrega;
     }
+
+
+    //To String
 
 
     @Override
     public String toString() {
         return "Pedido{" +
-                "id_pedido=" + id_pedido +
+                "id_pedido='" + id_pedido + '\'' +
                 ", cliente=" + cliente +
                 ", producto=" + producto +
                 ", usuario=" + usuario +

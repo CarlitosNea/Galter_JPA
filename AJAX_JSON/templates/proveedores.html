@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="/AJAX_JSON/styles/proveedores.css">
+    <title>Galter JPA</title>
+</head>
+<body>
+    <header>
+        <div id="logo"></div>
+    </header>
+    <main>
+        <section>
+            <div id="forms">
+                <fieldset>
+                    <legend>Buscar Proveedor</legend>
+                    <form id="form_prov_busc">
+                        <div id="sec_inputs">
+                            <p>Nombre Proveedor</p>
+                            <input type="text" id="nombre_input_buscar">
+                        </div>
+                        <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
+                    </form>
+                    <p id="resp_busqueda"></p>
+                </fieldset>
+            </div>
+
+            <div id="forms">
+                <fieldset>
+                    <legend>Nuevo Proveedor</legend>
+                    <form id="form_prov_novo" action="">
+                        <div id="sec_inputs">
+                            <label for="">Nombre Proveedor</label>
+                            <input type="text" id="nombre_input_novo">
+                        </div>
+                        <button type="submit" class="btn btn-dark" id="enviar">Enviar</button>
+                    </form>
+                    <p id="resp_enviar"></p>
+                </fieldset>
+            </div>
+
+            <div id="forms">
+                <fieldset>
+                    <legend>Actualizar Proveedor</legend>
+                    <form id="form_prov_updt" action="">
+                        <div id="sec_inputs">
+                            <label for="">Nombre del Proveedor</label>
+                            <input type="text" id="nombre_input_act1">
+                        </div>
+                        <div id="sec_inputs2">
+                            <label for="">Nuevo nombre</label>
+                            <input type="text" id="nombre_input_act2">
+                        </div>
+                        <button type="submit" class="btn btn-dark" id="actualizar">Actualizar</button>
+                    </form>
+                    <p id="resp_enviar"></p>
+                </fieldset>
+            </div>
+
+            <div id="forms">
+                <fieldset>
+                    <legend>Eliminar Proveedor</legend>
+                    <form id="form_prov_delete" action="">
+                        <div id="sec_inputs">
+                            <label for="">Nombre del Proveedor</label>
+                            <input type="text" id="nombre_input_delete">
+                        </div>
+                        <button type="submit" class="btn btn-dark" id="eliminar">Eliminar</button>
+                    </form>
+                    <p id="resp_delete"></p>
+                </fieldset>
+            </div>
+        </section>
+
+        <aside>
+            <button type="submit" class="btn btn-dark" id="listar">Listar Proveedores</button>
+                <table id="tabla_listar">
+                    <thead class="thead-dark"></thead>
+                    <tbody></tbody>
+                </table>
+            
+        </aside>
+    </main>
+
+    <footer></footer>
+    
+
+    <script src="/AJAX_JSON/scripts/proveedores.js"></script>
+</body>
+</html>
