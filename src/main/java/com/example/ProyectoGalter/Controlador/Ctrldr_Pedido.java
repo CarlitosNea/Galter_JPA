@@ -5,6 +5,7 @@ import com.example.ProyectoGalter.Servicio.Service_Pedido;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class Ctrldr_Pedido {
     private Service_Pedido servicioP;
