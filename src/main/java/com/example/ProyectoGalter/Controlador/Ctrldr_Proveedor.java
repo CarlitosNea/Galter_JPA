@@ -36,9 +36,9 @@ public class Ctrldr_Proveedor {
     }
 
 
-    @PostMapping("/actualizarProveedor/{nombreProveedor}")
-    public String actualizar_Prov(@PathVariable("nombreProveedor") String nombreProveedor, @RequestBody Proveedor nuevo_prov){
-        return servicioP.update_Prov(nombreProveedor,nuevo_prov);
+    @PostMapping("/actualizarProveedor")
+    public String actualizar_Prov(@RequestBody Proveedor nuevo_prov){
+        return servicioP.update_Prov(nuevo_prov);
     }
 
 

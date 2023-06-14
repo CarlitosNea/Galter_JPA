@@ -6,7 +6,6 @@ import com.example.ProyectoGalter.Repositorio.Repo_Proveedor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class Service_Proveedor {
@@ -45,11 +44,10 @@ public class Service_Proveedor {
 
 
     // Metodo actualizar
-    public String update_Prov(String prov, Proveedor nuevo_prov) {
-        if (repositorio.findById(prov).isPresent()) {
-            Proveedor proveedorAct = repositorio.findById(prov).get();
-            proveedorAct.setNombre_proveedor(nuevo_prov.getNombre_proveedor());
-            repositorio.save(proveedorAct);
+    public String update_Prov(Proveedor prov) {
+
+        if (repositorio.findById(prov.getNombre_proveedor()).isPresent()) {
+            repositorio.save(prov);
             return "Actualizado exitosamente";
         } else {
             return "El proveedor no existe";

@@ -54,4 +54,19 @@ $(document).ready(function(){
         })
     })
 
+
+    $('#eliminar').on('click', function(){
+        let dato = $('#nombre_input_delete').val();
+        $.ajax({
+            url: "http://localhost:8080/eliminarProveedor/"+dato,
+            type: "DELETE",
+            dataType: "JSON",
+            success: function(respuesta){
+                if(respuesta)
+                    alert("eliminado exitosamente")
+                else
+                    alert("no existe el dato")
+            }})
+        })
+
 })
