@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('#listar').on('click', function(){
         let tabla = $('#tabla_listar');
         $.ajax({
-            url: "http://localhost:8080/listarUsuarios",
+            url: "http://localhost:8080/listarPedido",
             type : "GET",
             dataType: "JSON",
             success: function(res){
@@ -10,21 +10,25 @@ $(document).ready(function(){
                 tabla.empty(); // Limpiamos la tabla antes de agregar los datos
                 //encabezado
                 let encabezado = $('<tr></tr>');
-                encabezado.append('<th>Codigo</th>');
-                encabezado.append('<th>Nombre</th>');
-                encabezado.append('<th>Correo</th>');
-                encabezado.append('<th>Contraseña</th>');
-                encabezado.append('<th>Tipo</th>');
+                encabezado.append('<th>Id</th>');
+                encabezado.append('<th>Cliente</th>');
+                encabezado.append('<th>Producto</th>');
+                encabezado.append('<th>Usuario</th>');
+                encabezado.append('<th>Tiempo Produccion (h)</th>');
+                encabezado.append('<th>Fecha Encargo</th>');
+                encabezado.append('<th>Fecha Entrega</th>');
                 
                 tabla.append(encabezado);
                 // Agregamos los datos a cada fila de la tabla
                 for (let i = 0; i < res.length; i++) {
                     let fila = $('<tr></tr>');
-                    fila.append('<td>' + res[i].codi_usuario + '</td>');
-                    fila.append('<td>' + res[i].nombre_usuario + '</td>');
-                    fila.append('<td>' + res[i].correo_usuario + '</td>');
-                    fila.append('<td>' + res[i].pass_usuario + '</td>');
-                    fila.append('<td>' + res[i].tipo_usuario + '</td>');
+                    fila.append('<td>' + res[i].id_pedido + '</td>');
+                    fila.append('<td>' + res[i].cliente + '</td>');
+                    fila.append('<td>' + res[i].producto + '</td>');
+                    fila.append('<td>' + res[i].usuario + '</td>');
+                    fila.append('<td>' + res[i].tiempo_pedido + '</td>');
+                    fila.append('<td>' + res[i].fecha_encargo + '</td>');
+                    fila.append('<td>' + res[i].fecha_entrega + '</td>');
                     tabla.append(fila);
                 }
             }
@@ -34,7 +38,7 @@ $(document).ready(function(){
     $('#buscar').on('click', function(){
         let dato = $('#id_input_buscar').val();
         $.ajax({
-            url: "http://localhost:8080/buscarUsuario/"+dato,
+            url: "http://localhost:8080/buscarPedidoCodigo/"+dato,
             type: "GET",
             dataType: 'json',
             success: function(respuesta){
@@ -48,17 +52,19 @@ $(document).ready(function(){
 
     $('#enviar').on('click', function() {
         let datos = {
-            codi_usuario: 0,
-            nombre_usuario: $('#nombre_input_novo').val(),
-            correo_usuario: $('#email_input_novo').val(),
-            pass_usuario: $('#pass_input_novo').val(),
-            tipo_usuario: $('#type_input_novo').val(),
+            id_pedido: 0,
+            cliente: $('#cli_input_novo').val(),
+            producto: $('#prod_input_novo').val(),
+            usuario: $('#usu_input_novo').val(),
+            tiempo_pedido: $('#time_input_novo').val(),
+            fecha_encargo: $('#encargo_input_novo').val(),
+            fecha_entrega: $('#entrega_input_novo').val(),
         };
         let datosEnvio = JSON.stringify(datos);
         console.log(datos);
         console.log(datosEnvio);
         $.ajax({
-            url: "http://localhost:8080/insertarUsusario",
+            url: "http://localhost:8080/insertarPedido",
             type: "POST",
             data: datosEnvio,
             contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
@@ -79,17 +85,19 @@ $(document).ready(function(){
 
     $('#actualizar').on('click', function() {
         let datos = {
-            codi_usuario: $('#codigo_input_act').val(),
-            nombre_usuario: $('#nombre_input_act').val(),
-            correo_usuario: $('#email_input_act').val(),
-            pass_usuario: $('#pass_input_act').val(),
-            tipo_usuario: $('#type_input_act').val(),
+            id_pedido: $('#codigo_input_act').val(),
+            cliente: $('#cli_input_act').val(),
+            producto: $('#prod_input_act').val(),
+            usuario: $('#usu_input_act').val(),
+            tiempo_pedido: $('#time_input_act').val(),
+            fecha_encargo: $('#encargo_input_act').val(),
+            fecha_entrega: $('#entrega_input_act').val(),
         };
         let datosEnvio = JSON.stringify(datos);
         console.log(datos);
         console.log(datosEnvio);
         $.ajax({
-            url: "http://localhost:8080/actualizarUsuario",
+            url: "http://localhost:8080/actualizarPedido",
             type: "POST",
             data: datosEnvio,
             contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
@@ -104,26 +112,6 @@ $(document).ready(function(){
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
             }
-        });
-    });
-
-
-    $('#eliminar').on('click', function() {
-        let dato = $('#id_input_delete').val();
-        $.ajax({
-            url: "http://localhost:8080/eliminarUsuario/" + dato,
-            type: "DELETE",
-            dataType: "json", // Corregido: dataType en minúscula
-                success: function(respuesta) {
-                    if (respuesta) {
-                        alert("Eliminado exitosamente");
-                    } else {
-                        alert("No existe el dato");
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                }
         });
     });
 

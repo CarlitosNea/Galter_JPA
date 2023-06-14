@@ -9,9 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/AJAX_JSON/scripts/usuarios.js"></script>
+    <script src="/AJAX_JSON/scripts/pedidos.js"></script>
     <link rel="stylesheet" href="/AJAX_JSON/styles/styles.css">
-    <title>Usuarios Galter</title>
+    <title>Pedidos Galter</title>
 </head>
 <body>
     <header>
@@ -21,10 +21,10 @@
         <section>
             <div id="forms">
                 <fieldset>
-                    <legend>Buscar Usuario</legend>
-                    <form id="form_usu_busc">
+                    <legend>Buscar Pedido</legend>
+                    <form id="form_ped_busc">
                         <div id="sec_inputs">
-                            <p>Codigo del Usuario</p>
+                            <p>Id Pedido</p>
                             <input type="text" id="id_input_buscar">
                         </div>
                         <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
@@ -35,23 +35,31 @@
 
             <div id="forms">
                 <fieldset>
-                    <legend>Nuevo Usuario</legend>
-                    <form id="form_usu_novo" action="">
+                    <legend>Nuevo Pedido</legend>
+                    <form id="form_ped_novo" action="">
                         <div id="sec_inputs">
-                            <label for="">Nombre Usuario</label>
-                            <input type="text" id="nombre_input_novo">
+                            <label for="">Codigo Cliente</label>
+                            <input type="text" id="cli_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Correo Usuario</label>
-                            <input type="email" id="email_input_novo">
+                            <label for="">Codigo Producto</label>
+                            <input type="text" id="prod_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Contraseña</label>
-                            <input type="text" id="pass_input_novo">
+                            <label for="">Codigo Usuario</label>
+                            <input type="text" id="usu_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Tipo de Usuario</label>
-                            <input type="number" id="type_input_novo">
+                            <label for="">Tiempo Produccion</label>
+                            <input type="number" id="time_input_novo">
+                        </div>
+                        <div id="sec_inputs">
+                            <label for="">Fecha de Encargo</label>
+                            <input type="date" id="encargo_input_novo">
+                        </div>
+                        <div id="sec_inputs">
+                            <label for="">Fecha de Entrega</label>
+                            <input type="date" id="entrega_input_novo">
                         </div>
                         <button type="submit" class="btn btn-dark" id="enviar">Enviar</button>
                     </form>
@@ -61,51 +69,45 @@
             
             <div id="forms">
                 <fieldset>
-                    <legend>Actualizar Usuario</legend>
-                    <form id="form_usu_act" action="">
+                    <legend>Actualizar Pedido</legend>
+                    <form id="form_ped_act" action="">
                         <div id="sec_inputs">
-                            <label for="">Codigo del Usuario</label>
-                            <input type="number" id="codigo_input_act">
+                            <label for="">Codigo del Pedido</label>
+                            <input type="text" id="codigo_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Confirmar Nombre</label>
-                            <input type="text" id="nombre_input_act">
+                            <label for="">Confirmar Codigo Cliente</label>
+                            <input type="text" id="cli_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Confirmar Correo</label>
-                            <input type="email" id="email_input_act">
+                            <label for="">Confirmar Codigo Producto</label>
+                            <input type="text" id="prod_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Confirmar Contraseña</label>
-                            <input type="text" id="pass_input_act">
+                            <label for="">Confirmar Codigo Usuario</label>
+                            <input type="text" id="usu_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Confirmar Tipo</label>
-                            <input type="number" id="type_input_act">
+                            <label for="">Confirmar Tiempo Produccion</label>
+                            <input type="number" id="time_input_act">
+                        </div>
+                        <div id="sec_inputs">
+                            <label for="">Confirmar Fecha de Encargo</label>
+                            <input type="date" id="encargo_input_act">
+                        </div>
+                        <div id="sec_inputs">
+                            <label for="">Confirmar Fecha de Entrega</label>
+                            <input type="date" id="entrega_input_act">
                         </div>
                         <button type="submit" class="btn btn-dark" id="actualizar">Actualizar</button>
                     </form>
                     <p id="resp_enviar"></p>
                 </fieldset>
             </div>
-
-            <div id="forms">
-                <fieldset>
-                    <legend>Eliminar Usuario</legend>
-                    <form id="form_usu_delete" action="">
-                        <div id="sec_inputs">
-                            <label for="">Codigo de Usuario</label>
-                            <input type="number" id="id_input_delete">
-                        </div>
-                        <button type="submit" class="btn btn-dark" id="eliminar">Eliminar</button>
-                    </form>
-                    <p id="resp_delete"></p>
-                </fieldset>
-            </div>
         </section>
 
         <aside>
-            <button type="submit" class="btn btn-dark" id="listar">Listar Usuarios</button>
+            <button type="submit" class="btn btn-dark" id="listar">Listar Pedidos</button>
                 <table id="tabla_listar">
                     <thead class="thead-dark"></thead>
                     <tbody></tbody>
@@ -117,6 +119,6 @@
     <footer></footer>
     
 
-    <script src="/AJAX_JSON/scripts/usuarios.js"></script>
+    <script src="/AJAX_JSON/scripts/pedidos.js"></script>
 </body>
 </html>
