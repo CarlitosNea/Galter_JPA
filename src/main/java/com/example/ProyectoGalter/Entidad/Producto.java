@@ -79,8 +79,12 @@ public class Producto {
         this.long_prod = long_prod;
     }
 
-    public Material getMaterial_prod() {
-        return material_prod;
+    public String getMaterial_prod() {
+        if (material_prod != null) {
+            return material_prod.getCodi_mate();
+        }
+        return null;
+
     }
 
     public void setMaterial_prod(Material material_prod) {

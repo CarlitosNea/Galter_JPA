@@ -61,8 +61,11 @@ public class Material {
         this.cant_mate = cant_mate;
     }
 
-    public Proveedor getProveedor() {
-        return proveedor;
+    public String getProveedor() {
+        if (proveedor != null) {
+            return proveedor.getNombre_proveedor();
+        }
+        return null;
     }
 
     public void setProveedor(Proveedor proveedor) {

@@ -63,24 +63,33 @@ public class Pedido {
         this.id_pedido = id_pedido;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getCliente() {
+        if (cliente != null) {
+            return cliente.getId_cliente();
+        }
+        return 0;
     }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public String getProducto() {
+        if (producto != null) {
+            return producto.getCodi_prod();
+        }
+        return null;
     }
 
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public int getUsuario() {
+        if (usuario != null) {
+            return usuario.getCodi_usuario();
+        }
+        return 0;
     }
 
     public void setUsuario(Usuario usuario) {
