@@ -48,7 +48,7 @@ $(document).ready(function(){
 
     $('#enviar').on('click', function() {
         let datos = {
-            codi_usuario: 0,
+            codi_usuario: $('#codigo_input_novo').val(),
             nombre_cliente: $('#nombre_input_novo').val(),
             telefono_cliente: $('#telefono_input_novo').val(),
             representante_cliente: $('#rep_input_novo').val(),
@@ -92,8 +92,8 @@ $(document).ready(function(){
             url: "http://localhost:8080/actualizarCliente",
             type: "POST",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
-            dataType: "json", // Corregido: dataType en minúscula
+            contentType: "application/json",
+            dataType: "json", 
             success: function(respuesta) {
                 if (respuesta) {
                     alert("Actualizado exitosamente");

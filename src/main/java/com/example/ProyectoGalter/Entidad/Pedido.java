@@ -3,6 +3,7 @@ package com.example.ProyectoGalter.Entidad;
 import jakarta.persistence.*;
 
 import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "pedido")
@@ -29,16 +30,16 @@ public class Pedido {
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private Calendar fecha_encargo;
+    private Date fecha_encargo;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private Calendar fecha_entrega;
+    private Date fecha_entrega;
 
 
     // Constructores
 
-    public Pedido(String id_pedido, Cliente cliente, Producto producto, Usuario usuario, int tiempo_pedido, Calendar fecha_encargo, Calendar fecha_entrega) {
+    public Pedido(String id_pedido, Cliente cliente, Producto producto, Usuario usuario, int tiempo_pedido, Date fecha_encargo, Date fecha_entrega) {
         this.id_pedido = id_pedido;
         this.cliente = cliente;
         this.producto = producto;
@@ -104,19 +105,19 @@ public class Pedido {
         this.tiempo_pedido = tiempo_pedido;
     }
 
-    public Calendar getFecha_encargo() {
+    public Date getFecha_encargo() {
         return fecha_encargo;
     }
 
-    public void setFecha_encargo(Calendar fecha_encargo) {
+    public void setFecha_encargo(Date fecha_encargo) {
         this.fecha_encargo = fecha_encargo;
     }
 
-    public Calendar getFecha_entrega() {
+    public Date getFecha_entrega() {
         return fecha_entrega;
     }
 
-    public void setFecha_entrega(Calendar fecha_entrega) {
+    public void setFecha_entrega(Date fecha_entrega) {
         this.fecha_entrega = fecha_entrega;
     }
 

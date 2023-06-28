@@ -52,7 +52,7 @@ $(document).ready(function(){
 
     $('#enviar').on('click', function() {
         let datos = {
-            id_pedido: 0,
+            id_pedido: $('#codigo_input_novo').val(),
             cliente: $('#cli_input_novo').val(),
             producto: $('#prod_input_novo').val(),
             usuario: $('#usu_input_novo').val(),
