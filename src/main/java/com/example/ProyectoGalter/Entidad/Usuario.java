@@ -10,7 +10,7 @@ public class Usuario {
     // Creacion de columnas
     @Id
     @Column(nullable = false)
-    private int codi_usuario;
+    private String codi_usuario;
 
     @Column(unique = true,length = 50)
     private String nombre_usuario;
@@ -28,7 +28,7 @@ public class Usuario {
     // Creacion de constructores
 
 
-    public Usuario(int codi_usuario, String nombre_usuario, String correo_usuario, String pass_usuario, int tipo_usuario) {
+    public Usuario(String codi_usuario, String nombre_usuario, String correo_usuario, String pass_usuario, int tipo_usuario) {
         this.codi_usuario = codi_usuario;
         this.nombre_usuario = nombre_usuario;
         this.correo_usuario = correo_usuario;
@@ -42,11 +42,11 @@ public class Usuario {
 
     // Metodos GET & SET
 
-    public int getCodi_usuario() {
+    public String getCodi_usuario() {
         return codi_usuario;
     }
 
-    public void setCodi_usuario(int codi_usuario) {
+    public void setCodi_usuario(String codi_usuario) {
         this.codi_usuario = codi_usuario;
     }
 

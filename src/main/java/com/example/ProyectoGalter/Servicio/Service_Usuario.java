@@ -25,7 +25,7 @@ public class Service_Usuario {
     }
 
     public String insertar_usu(Usuario usu){
-        if (repocitorio.findById(usu.getNombre_usuario()).isPresent())
+        if (repocitorio.findById(usu.getCodi_usuario()).isPresent())
             return "El usuario ya existe";
         else{
             repocitorio.save(usu);
@@ -35,7 +35,7 @@ public class Service_Usuario {
 
 
     public String actualizar_usu(Usuario usu){
-        if (repocitorio.findById(usu.getNombre_usuario()).isPresent()){
+        if (repocitorio.findById(usu.getCodi_usuario()).isPresent()){
             repocitorio.save(usu);
             return "Actualizado correctamente";
         }
@@ -44,9 +44,9 @@ public class Service_Usuario {
     }
 
 
-    public String eliminar(String nombre){
-        if (repocitorio.findById(nombre).isPresent()){
-            repocitorio.deleteById(nombre);
+    public String eliminar(String codigo){
+        if (repocitorio.findById(codigo).isPresent()){
+            repocitorio.deleteById(codigo);
             return "Eliminado correctamente";
         }
         else

@@ -63,11 +63,11 @@ public class Pedido {
         this.id_pedido = id_pedido;
     }
 
-    public int getCliente() {
+    public String getCliente() {
         if (cliente != null) {
             return cliente.getId_cliente();
         }
-        return 0;
+        return null;
     }
 
     public void setCliente(Cliente cliente) {
@@ -85,11 +85,11 @@ public class Pedido {
         this.producto = producto;
     }
 
-    public int getUsuario() {
+    public String getUsuario() {
         if (usuario != null) {
             return usuario.getCodi_usuario();
         }
-        return 0;
+        return null;
     }
 
     public void setUsuario(Usuario usuario) {

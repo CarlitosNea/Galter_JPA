@@ -1,5 +1,6 @@
 package com.example.ProyectoGalter.Entidad;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -80,7 +81,7 @@ public class Material {
                 "codi_mate='" + codi_mate + '\'' +
                 ", nomb_mate='" + nomb_mate + '\'' +
                 ", cant_mate=" + cant_mate +
-                ", proveedor=" + proveedor +
+                ", proveedor=" + proveedor.getNombre_proveedor() +
                 '}';
     }
 }

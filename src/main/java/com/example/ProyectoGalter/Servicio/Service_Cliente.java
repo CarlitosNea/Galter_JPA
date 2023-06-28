@@ -27,7 +27,7 @@ public class Service_Cliente {
     }
 
     public String insertar_cli(Cliente cli){
-        if (repocitorio.findById(cli.getNombre_cliente()).isPresent())
+        if (repocitorio.findById(cli.getId_cliente()).isPresent())
             return "El cliente ya existe";
         else{
             repocitorio.save(cli);
@@ -37,7 +37,7 @@ public class Service_Cliente {
 
 
     public String actualizar_cli(Cliente cli){
-        if (repocitorio.findById(cli.getNombre_cliente()).isPresent()){
+        if (repocitorio.findById(cli.getId_cliente()).isPresent()){
             repocitorio.save(cli);
             return "Actualizado correctamente";
         }
@@ -46,15 +46,12 @@ public class Service_Cliente {
     }
 
 
-    public String eliminar(String nombre){
-        if (repocitorio.findById(nombre).isPresent()){
-            repocitorio.deleteById(nombre);
+    public String eliminar(String codigo){
+        if (repocitorio.findById(codigo).isPresent()){
+            repocitorio.deleteById(codigo);
             return "Eliminado correctamente";
         }
         else
             return "El cliente no existe";
     }
-
-
-
 }

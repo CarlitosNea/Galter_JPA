@@ -3,6 +3,8 @@ package com.example.ProyectoGalter.Entidad;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "proveedor")
 public class Proveedor {

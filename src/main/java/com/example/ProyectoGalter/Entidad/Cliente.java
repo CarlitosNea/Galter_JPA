@@ -10,7 +10,7 @@ public class Cliente {
 
     @Id
     @Column(unique = false)
-    private int id_cliente;
+    private String id_cliente;
 
     @Column(unique = true, length = 50)
     private String nombre_cliente;
@@ -25,7 +25,7 @@ public class Cliente {
     private String direccion;
 
 
-    public Cliente(int id_cliente, String nombre_cliente, String telefono_cliente, String representante_cliente, String direccion) {
+    public Cliente(String id_cliente, String nombre_cliente, String telefono_cliente, String representante_cliente, String direccion) {
         this.id_cliente = id_cliente;
         this.nombre_cliente = nombre_cliente;
         this.telefono_cliente = telefono_cliente;
@@ -38,11 +38,11 @@ public class Cliente {
     }
 
 
-    public int getId_cliente() {
+    public String getId_cliente() {
         return id_cliente;
     }
 
-    public void setId_cliente(int id_cliente) {
+    public void setId_cliente(String id_cliente) {
         this.id_cliente = id_cliente;
     }
 

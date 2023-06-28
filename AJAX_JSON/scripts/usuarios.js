@@ -48,7 +48,7 @@ $(document).ready(function(){
 
     $('#enviar').on('click', function() {
         let datos = {
-            codi_usuario: 0,
+            codi_usuario: $('#codigo_input_novo').val(),
             nombre_usuario: $('#nombre_input_novo').val(),
             correo_usuario: $('#email_input_novo').val(),
             pass_usuario: $('#pass_input_novo').val(),
