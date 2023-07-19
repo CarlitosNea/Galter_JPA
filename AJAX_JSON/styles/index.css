@@ -1,0 +1,190 @@
+@font-face {
+    font-family: tipografia;
+    src: url(/styles/JosefinSans-VariableFont_wght.ttf);
+}
+body{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    padding: 30px;
+    background-color:rgba(1, 14, 40, 1);
+    font-family: tipografia;
+}
+aside{
+    position: fixed;
+    top: 10px;
+    left: 30px;
+    width: 20%;
+    height: 100%;
+    background-image: url(/img/marek-piwnicki-fKjPKFeilfg-unsplash.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+}
+#logo{
+    margin-top: 10px;
+    width: 250px;
+    height: 90px;
+    background-image: url(/img/logo.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+#info_usuario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    border-bottom: 2px gray solid;
+}
+#foto_perfil{
+    width: 150px;
+    height: 150px;
+    background-color: gray;
+}
+#nomb_usuario{
+    margin-top: 40px;
+    font-size: xx-large;
+    color: white;
+}
+#rol_usuario{
+    margin-top: -10px;
+    font-size: x-large;
+    margin-bottom: 30px;
+    color: white;
+}
+#opciones_perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    margin-top: 20px;
+    margin-bottom: 200px;
+}
+
+#link_micuenta,#link_mispedidos,#log_out{
+    text-decoration: none;
+    margin-top: 30px;
+    font-size: x-large;
+    color: #e1e1e1;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+#link_micuenta:focus,#link_micuenta:hover,
+#link_mispedidos:focus,#link_mispedidos:hover,
+#log_out:focus,#log_out:hover{
+    color: #fff;
+}
+
+#link_micuenta:focus:after,#link_micuenta:hover::after,
+#link_mispedidos:focus::after,#link_mispedidos:hover::after,
+#log_out:focus::after,#log_out:hover::after {
+    width: 100%;
+    left: 0%;
+}
+#link_micuenta::after,#link_mispedidos::after,#log_out::after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
+main{
+    margin-left: 300px;
+    width: 78%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#titulo{
+    margin-top: 50px;
+    font-size: xx-large;
+    color:steelblue;
+}
+#tablas{
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 45px;
+    grid-auto-rows: minmax(100px, auto);
+}
+#pedidos,
+#productos,
+#materiales,
+#usuarios,
+#proveedores,
+#clientes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px;
+    text-decoration: none;
+    color:steelblue;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid white;
+    box-shadow: 0 0 0 0 white;
+    border-radius: 30px;
+}
+#pedidos:hover,
+#productos:hover,
+#materiales:hover,
+#usuarios:hover,
+#proveedores:hover,
+#clientes:hover{
+    transform: translateY(-4px) translateX(-2px);
+    box-shadow: 2px 5px 0 0 white;
+}
+#pedidos:active,
+#productos:active,
+#materiales:active,
+#usuarios:active,
+#proveedores:active,
+#clientes:active{
+    transform: translateY(2px) translateX(1px);
+    box-shadow: 0 0 0 0 white;
+}
+#img_pedidos,
+#img_productos,
+#img_materiales,
+#img_usuarios,
+#img_proveedores,
+#img_clientes{
+    border-radius: 30px 30px 0 0;
+    width: 190px;
+    height: 190px;
+    background-color: gray;
+}
+#title_pedidos,
+#title_productos,
+#title_materiales,
+#title_usuarios,
+#title_proveedores,
+#title_clientes{
+    font-size: xx-large;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}

@@ -1,39 +1,141 @@
 $(document).ready(function(){
-    $('#listar').on('click', function(){
-        let tabla = $('#tabla_listar');
-        $.ajax({
-            url: "http://localhost:8080/listarPedido",
-            type : "GET",
-            dataType: "JSON",
-            success: function(res){
-                console.log(res);
-                tabla.empty(); // Limpiamos la tabla antes de agregar los datos
-                //encabezado
-                let encabezado = $('<tr></tr>');
-                encabezado.append('<th>Id</th>');
-                encabezado.append('<th>Cliente</th>');
-                encabezado.append('<th>Producto</th>');
-                encabezado.append('<th>Usuario</th>');
-                encabezado.append('<th>Tiempo Produccion (h)</th>');
-                encabezado.append('<th>Fecha Encargo</th>');
-                encabezado.append('<th>Fecha Entrega</th>');
-                
-                tabla.append(encabezado);
-                // Agregamos los datos a cada fila de la tabla
-                for (let i = 0; i < res.length; i++) {
-                    let fila = $('<tr></tr>');
-                    fila.append('<td>' + res[i].id_pedido + '</td>');
-                    fila.append('<td>' + res[i].cliente + '</td>');
-                    fila.append('<td>' + res[i].producto + '</td>');
-                    fila.append('<td>' + res[i].usuario + '</td>');
-                    fila.append('<td>' + res[i].tiempo_pedido + '</td>');
-                    fila.append('<td>' + res[i].fecha_encargo + '</td>');
-                    fila.append('<td>' + res[i].fecha_entrega + '</td>');
-                    tabla.append(fila);
-                }
+    
+    let tabla = $('#tabla_listar');
+    $.ajax({
+        url: "http://localhost:8080/listarPedido",
+        type : "GET",
+        dataType: "JSON",
+        success: function(res){
+            console.log(res);
+            tabla.empty(); // Limpiamos la tabla antes de agregar los datos
+            //encabezado
+            let encabezado = $('<tr></tr>');
+            encabezado.append('<th>Id</th>');
+            encabezado.append('<th>Cliente</th>');
+            encabezado.append('<th>Producto</th>');
+            encabezado.append('<th>Usuario</th>');
+            encabezado.append('<th>Tiempo Produccion (h)</th>');
+            encabezado.append('<th>Fecha Encargo</th>');
+            encabezado.append('<th>Fecha Entrega</th>');
+            
+            tabla.append(encabezado);
+            // Agregamos los datos a cada fila de la tabla
+            for (let i = 0; i < res.length; i++) {
+                let fila = $('<tr></tr>');
+                fila.append('<td>' + res[i].id_pedido + '</td>');
+                fila.append('<td>' + res[i].cliente + '</td>');
+                fila.append('<td>' + res[i].producto + '</td>');
+                fila.append('<td>' + res[i].usuario + '</td>');
+                fila.append('<td>' + res[i].tiempo_pedido + '</td>');
+                fila.append('<td>' + res[i].fecha_encargo + '</td>');
+                fila.append('<td>' + res[i].fecha_entrega + '</td>');
+                tabla.append(fila);
             }
-        })
+        }
     })
+
+    let listaClientes = document.querySelector('#cli_input_novo')
+        listaClientes.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarCliente",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Cliente => {
+                    listaClientes.innerHTML += '<option value="' +Cliente["id_cliente"] +'">'+Cliente["nombre_cliente"] +'</option>';
+                });
+            }
+        });
+
+    let listaClientes1 = document.querySelector('#cli_input_act')
+        listaClientes1.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarCliente",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Cliente => {
+                    listaClientes1.innerHTML += '<option value="' +Cliente["id_cliente"] +'">'+Cliente["nombre_cliente"] +'</option>';
+                });
+            }
+        });
+
+
+    let listaProd = document.querySelector('#prod_input_novo')
+        listaProd.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarProductos",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Producto => {
+                    listaProd.innerHTML += '<option value="' +Producto["codi_prod"] +'">'+Producto["nomb_prod"] +'</option>';
+                });
+            }
+        });
+
+        let listaProd1 = document.querySelector('#prod_input_act')
+        listaProd1.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarProductos",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Producto => {
+                    listaProd1.innerHTML += '<option value="' +Producto["codi_prod"] +'">'+Producto["nomb_prod"] +'</option>';
+                });
+            }
+        });
+
+
+    let listaUsu = document.querySelector('#usu_input_novo')
+        listaUsu.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarUsuarios",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Usuario => {
+                    listaUsu.innerHTML += '<option value="' +Usuario["codi_usuario"] +'">'+Usuario["nombre_usuario"] +'</option>';
+                });
+            }
+        });
+
+    
+    let listaUsu1 = document.querySelector('#usu_input_act')
+        listaUsu1.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarUsuarios",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Usuario => {
+                    listaUsu1.innerHTML += '<option value="' +Usuario["codi_usuario"] +'">'+Usuario["nombre_usuario"] +'</option>';
+                });
+            }
+        });
+
+    let listaPed = document.querySelector('#codigo_input_novo')
+        listaPed.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listaPedidos",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Pedido => {
+                    listaPed.innerHTML += '<option value="' +Pedido["id_pedido"] +'">'+Pedido["id_pedido"] +'</option>';
+                });
+            }
+        });
+
+    
 
     $('#buscar').on('click', function(){
         let dato = $('#id_input_buscar').val();
@@ -52,7 +154,7 @@ $(document).ready(function(){
 
     $('#enviar').on('click', function() {
         let datos = {
-            id_pedido: $('#codigo_input_novo').val(),
+            id_pedido: 0,
             cliente: $('#cli_input_novo').val(),
             producto: $('#prod_input_novo').val(),
             usuario: $('#usu_input_novo').val(),
