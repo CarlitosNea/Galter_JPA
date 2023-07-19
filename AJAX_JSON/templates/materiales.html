@@ -4,44 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/scripts/materiales.js"></script>
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/materiales.css">
     <title>Materiales Galter</title>
 </head>
 <body>
-    <header>
-        <div id="logo"></div>
-    </header>
-    <ul>
-        <li><a  href="clientes.html">Clientes</a></li>
-        <li><a  href="pedidos.html">Pedidos</a>
-        <li><a  href="productos.html">Productos</a>
-        <li><a  href="proveedores.html">Proveedores </a></li>
-        <li><a  href="usurios.html">Usuarios</a></li>
-    </ul>
-    <main>
-        <section>
-            <div id="forms">
-                <fieldset>
+        <aside>
+            <div id="logo"></div>
+            <div id="opc_usuario">
+                <div id="foto_perfil"></div>
+                <a href="" id="nomb_usuario">Nombre Usuario</a>
+            </div>
+            <div id="menu_tablas">
+                <a href="/templates/index.html" id="links_tablas">Home</a>
+                <a href="/templates/clientes.html" id="links_tablas">Clientes</a>
+                <a href="/templates/pedidos.html" id="links_tablas">Pedidos</a>
+                <a href="/templates/productos.html" id="links_tablas">Productos</a>
+                <a href="/templates/proveedores.html" id="links_tablas">Proveedores</a>
+                <a href="/templates/usuarios.html" id="links_tablas">Usuarios</a>
+            </div>
+        </aside>
+        <main>
+            <p id="titulo">MATERIALES</p>
+            <table id="tabla_listar">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+            <section>
+                <fieldset id="fieldset-buscar">
                     <legend>Buscar Material</legend>
                     <form id="form_mat_busc">
                         <div id="sec_inputs">
                             <p>Id Material</p>
                             <input type="text" id="id_input_buscar">
+                            <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
                         </div>
-                        <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
+                        
                     </form>
                     <p id="resp_busqueda"></p>
                 </fieldset>
-            </div>
-
-            <div id="forms">
-                <fieldset>
+    
+                <fieldset id="fieldset-input">
                     <legend>Nuevo Material</legend>
                     <form id="form_mat_novo" action="">
                         <div id="sec_inputs">
@@ -64,10 +68,8 @@
                     </form>
                     <p id="resp_enviar"></p>
                 </fieldset>
-            </div>
-            
-            <div id="forms">
-                <fieldset>
+    
+                <fieldset id="fieldset-update">
                     <legend>Actualizar Material</legend>
                     <form id="form_mat_act" action="">
                         <div id="sec_inputs">
@@ -90,10 +92,8 @@
                     </form>
                     <p id="resp_enviar"></p>
                 </fieldset>
-            </div>
-
-            <div id="forms">
-                <fieldset>
+    
+                <fieldset id="fieldset-delete">
                     <legend>Eliminar Material</legend>
                     <form id="form_mat_delete" action="">
                         <div id="sec_inputs">
@@ -104,19 +104,7 @@
                     </form>
                     <p id="resp_delete"></p>
                 </fieldset>
-            </div>
-        </section>
-
-        <aside>
-            <button type="submit" class="btn btn-dark" id="listar">Listar Materiales</button>
-                <table id="tabla_listar">
-                    <thead class="thead-dark"></thead>
-                    <tbody></tbody>
-                </table>
-            
-        </aside>
-    </main>
-
-    <footer></footer>
+            </section>
+        </main>
 </body>
 </html>
