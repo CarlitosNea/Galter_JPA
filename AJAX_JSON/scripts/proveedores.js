@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    $('#listar').on('click', function(){
         let tabla = $('#tabla_listar');
         $.ajax({
             url: "http://localhost:8080/listarProveedores",
@@ -22,7 +21,6 @@ $(document).ready(function(){
                 }
             }
         })
-    })
 
     $('#buscar').on('click', function(){
         let dato = $('#nombre_input_buscar').val();

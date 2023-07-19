@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    $('#listar').on('click', function(){
         let tabla = $('#tabla_listar');
         $.ajax({
             url: "http://localhost:8080/listarProductos",
@@ -32,7 +31,34 @@ $(document).ready(function(){
                 }
             }
         })
-    })
+
+        let listaMat = document.querySelector('#mat_input_novo')
+        listaMat.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarMaterial",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Material => {
+                    listaMat.innerHTML += '<option value="' +Material["codi_mate"] +'">'+Material["nomb_mate"] +'</option>';
+                });
+            }
+        });
+
+        let listaMat1 = document.querySelector('#mat_input_act')
+        listaMat1.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarMaterial",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Material => {
+                    listaMat1.innerHTML += '<option value="' +Material["codi_mate"] +'">'+Material["nomb_mate"] +'</option>';
+                });
+            }
+        });
 
     $('#buscar').on('click', function(){
         let dato = $('#id_input_buscar').val();
