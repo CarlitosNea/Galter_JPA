@@ -1,4 +1,33 @@
 $(document).ready(function(){
+
+    let listaProv = document.querySelector('#prov_input_novo')
+        listaProv.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarProveedores",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Proveedor => {
+                    listaProv.innerHTML += '<option value="' +Proveedor["nombre_proveedor"] +'">'+Proveedor["nombre_proveedor"] +'</option>';
+                });
+            }
+        });
+
+    let listaProv2 = document.querySelector('#prov_input_act')
+        listaProv2.innerHTML = ''
+        $.ajax({
+            url: "http://localhost:8080/listarProveedores",
+            type: "GET",
+            datatype: "JSON",
+            success: function(respuesta) {
+                console.log(respuesta)
+                Object.values(respuesta).forEach(Proveedor => {
+                    listaProv2.innerHTML += '<option value="' +Proveedor["nombre_proveedor"] +'">'+Proveedor["nombre_proveedor"] +'</option>';
+                });
+            }
+        });
+
     $('#listar').on('click', function(){
         let tabla = $('#tabla_listar');
         $.ajax({
