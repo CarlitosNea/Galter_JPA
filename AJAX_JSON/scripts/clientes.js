@@ -1,6 +1,5 @@
 $(document).ready(function(){
-    $('#listar').on('click', function(){
-        let tabla = $('#tabla_listar');
+    let tabla = $('#tabla_listar');
         $.ajax({
             url: "http://localhost:8080/listarCliente",
             type : "GET",
@@ -29,7 +28,7 @@ $(document).ready(function(){
                 }
             }
         })
-    })
+    
 
     $('#buscar').on('click', function(){
         let dato = $('#id_input_buscar').val();
