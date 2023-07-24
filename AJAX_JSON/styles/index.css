@@ -175,7 +175,6 @@ section{
     border-radius: 30px 30px 0 0;
     width: 190px;
     height: 190px;
-    background-color: gray;
 }
 #title_pedidos,
 #title_productos,
@@ -187,3 +186,71 @@ section{
     margin-top: 10px;
     margin-bottom: 5px;
 }
+#img_pedidos{
+    background-image: url("/img/pedido.png");
+    background-size: cover;
+}
+#img_productos{
+    background-image: url("/img/producto.png");
+    background-size: cover;
+}
+#img_materiales{
+    background-image: url("/img/material.png");
+    background-size: cover;
+    
+}
+#img_usuarios{
+    background-image: url("/img/usuarioh.png");
+    background-size: cover;
+    
+}
+
+#img_proveedores{
+    background-image: url("/img/proveedor.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+#img_clientes{
+    background-image: url("/img/cliente.png");
+    background-size: cover;
+    
+}
+
+
+@media (max-width: 767px) {
+    body {
+      flex-direction: column;
+      padding: 10px;
+    }
+    
+    aside {
+      position: static; 
+      width: 90%;
+      height: auto;
+      margin-bottom: 30px;
+    }
+    
+    main {
+      margin-left: 0; 
+      width: 100%;
+    }
+    
+    #tablas {
+      grid-template-columns: repeat(1, 1fr); 
+      grid-gap: 20px;
+    }
+    
+    #pedidos,
+    #productos,
+    #materiales,
+    #usuarios,
+    #proveedores,
+    #clientes {
+      width: 100%; 
+    }
+
+}
+  

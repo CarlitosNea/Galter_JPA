@@ -60,6 +60,9 @@ $(document).ready(function(){
             }
         });
 
+
+
+
     $('#buscar').on('click', function(){
         let dato = $('#id_input_buscar').val();
         $.ajax({
@@ -75,6 +78,8 @@ $(document).ready(function(){
         });
     });
 
+
+    
     $('#enviar').on('click', function() {
         let datos = {
             codi_prod: $('#codigo_input_novo').val(),

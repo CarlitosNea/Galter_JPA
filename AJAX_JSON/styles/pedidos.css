@@ -43,6 +43,8 @@ aside{
     height: 120px;
 }
 #foto_perfil{
+    background-image: url("/img/usuario.png");
+    background-size: cover;
     width: 100px;
     height: 65px;
 }
@@ -226,18 +228,22 @@ select{
 
 @media screen and (max-width: 700px) {
     body {
-        display: flex;
-      flex-direction: column;
-      padding: 20px;
-    }
-  
-    aside {
-        display: flex;
-        position: absolute;
-        width: 50%;
-        height: 70%;
-    }
-  
+        flex-direction: column;
+        padding: 10px;
+      }
+      
+      aside {
+        position: static; 
+        width: 90%;
+        height: auto;
+        margin-bottom: 30px;
+      }
+      
+      main {
+        margin-left: 0; 
+        width: 100%;
+      }
+
     #opc_usuario {
       margin-top: 20px;
       flex-direction: column;
@@ -271,12 +277,7 @@ select{
         overflow: hidden;
         margin: 5px;
       }
-      main {
-        width: 150%;
-        margin-top: 200%;
-      margin-left: 0;
-      border-radius: 0;
-    }
+
       
       .uno,
       .dos {
@@ -298,7 +299,7 @@ select{
         border-radius: 20px;
         border: 2px solid rgba(173, 29, 29, 0.756);
         font-size: x-large;
-        margin-top: 70px;
+        margin-top: 7px;
     }
     
     select{
