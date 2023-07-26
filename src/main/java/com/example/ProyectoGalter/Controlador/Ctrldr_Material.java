@@ -27,9 +27,9 @@ public class Ctrldr_Material {
     }
 
 
-    @PostMapping("/insertarMaterial")
-    public String insertar_Mate(@RequestBody Material mate){
-        return servicioM.insertar_Mate(mate);
+    @PostMapping("/insertarMaterial/{prov}")
+    public String insertar_Mate(@PathVariable("prov")String prov, @RequestBody Material mate){
+        return servicioM.insertar_Mate(prov, mate);
     }
 
     @PostMapping("/actualizarMaterial")
