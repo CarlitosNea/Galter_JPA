@@ -19,9 +19,12 @@ public class Proveedor {
     private String telefono_proveedor;
 
 
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Material> material;
+
+
 
     // Creacion de constructores
-
 
     public Proveedor(String nombre_proveedor, String telefono_proveedor) {
         this.nombre_proveedor = nombre_proveedor;
@@ -56,8 +59,8 @@ public class Proveedor {
     @Override
     public String toString() {
         return "Proveedor{" +
-                "nombre_proveedor='" + nombre_proveedor + '\'' +
-                ", telefono_proveedor='" + telefono_proveedor + '\'' +
+                "nombre_proveedor=" + nombre_proveedor +
+                ", telefono_proveedor=" + telefono_proveedor +
                 '}';
     }
 }

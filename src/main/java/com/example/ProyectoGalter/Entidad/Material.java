@@ -2,6 +2,8 @@ package com.example.ProyectoGalter.Entidad;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "material")
@@ -19,8 +21,9 @@ public class Material {
     @Column(nullable = false)
     private Double cant_mate;
 
-    @ManyToOne
-    @JoinColumn(name = "proveedor",referencedColumnName = "nombre_proveedor")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "proveedor",referencedColumnName = "nombre_proveedor", nullable = false)
+    @Fetch(FetchMode.JOIN)
     private Proveedor proveedor;
 
 
@@ -63,10 +66,7 @@ public class Material {
     }
 
     public String getProveedor() {
-        if (proveedor != null) {
-            return proveedor.getNombre_proveedor();
-        }
-        return null;
+        return proveedor.getNombre_proveedor();
     }
 
     public void setProveedor(Proveedor proveedor) {
@@ -78,10 +78,10 @@ public class Material {
     @Override
     public String toString() {
         return "Material{" +
-                "codi_mate='" + codi_mate + '\'' +
-                ", nomb_mate='" + nomb_mate + '\'' +
+                "codi_mate=" + codi_mate +
+                ", nomb_mate=" + nomb_mate  +
                 ", cant_mate=" + cant_mate +
-                ", proveedor=" + proveedor.getNombre_proveedor() +
+                ", proveedor=" + proveedor +
                 '}';
     }
 }

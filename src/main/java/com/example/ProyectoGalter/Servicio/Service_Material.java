@@ -1,7 +1,9 @@
 package com.example.ProyectoGalter.Servicio;
 
 import com.example.ProyectoGalter.Entidad.Material;
+import com.example.ProyectoGalter.Entidad.Proveedor;
 import com.example.ProyectoGalter.Repositorio.Repo_Material;
+import com.example.ProyectoGalter.Repositorio.Repo_Proveedor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -10,8 +12,10 @@ public class Service_Material {
 
     // Llamado del repositorio
     private Repo_Material repositorio;
-    public Service_Material(Repo_Material repositorio){
+    private Repo_Proveedor repo_proveedor;
+    public Service_Material(Repo_Material repositorio, Repo_Proveedor repo_proveedor){
         this.repositorio = repositorio;
+        this.repo_proveedor = repo_proveedor;
     }
 
 
@@ -31,13 +35,21 @@ public class Service_Material {
 
 
     // Metodo insertar
-    public String insertar_Mate(Material mate){
-        if (repositorio.findById(mate.getCodi_mate()).isPresent())
-            return "Datos mal ingresados";
-        else {
-            repositorio.save(mate);
-            return "Registrado exitosamente";
+    public String insertar_Mate(String prov, Material mate){
+        if (repo_proveedor.findById(prov).isPresent()){
+            Proveedor Prov = repo_proveedor.findById(prov).get();
+            mate.setProveedor(Prov);
+            if (repositorio.findById(mate.getCodi_mate()).isPresent())
+                return "El codigo del material ya existe";
+            else {
+                repositorio.save(mate);
+                return "Registrado exitosamente";
+            }
         }
+        else {
+            return "Datos de Proveedor mal ingresados";
+        }
+
     }
 
 
