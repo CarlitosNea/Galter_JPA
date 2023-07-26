@@ -224,5 +224,25 @@ select{
 }
 
 
-@media screen and (min-width:320px) and (max-width:700px){
+@media screen and (max-width: 767px) {
+    body {
+        flex-direction: column;
+        padding: 10px;
+    }
+    aside {
+        position: static; 
+        width: 90%;
+        height: auto;
+        margin-bottom: 30px;
+    }
+    main {
+        margin-left: 0; 
+        width: 100%;
+    }
+    #form_mat_novo,#form_mat_act,#form_mat_delete{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 45px;
+        grid-auto-rows: minmax(100px, auto);
+    }
 }
