@@ -34,7 +34,7 @@ aside{
     background-repeat: no-repeat;
 }
 #opc_usuario{
-    width: 80%;
+    width: 90%;
     margin-top: 90px;
     display: flex;
     flex-direction: row;
@@ -43,13 +43,16 @@ aside{
     height: 120px;
 }
 #foto_perfil{
-    width: 65px;
+    background-image: url("/img/usuario2.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 90px;
     height: 65px;
-    background-color: gray;
 }
 #nomb_usuario{
     text-decoration: none;
-    font-size: x-large;
+    font-size: 26px;
     color: #e1e1e1;
     cursor: pointer;
     position: relative;
@@ -180,7 +183,7 @@ fieldset{
     width: 50%;
 }
 #buscar{
-    margin-left: 40px;
+    margin-left: 10px;
 }
 button{
     height: 50px;
@@ -219,6 +222,9 @@ select{
     font-size: 20px;
     font-family: tipografia;
 }
+
+
+
 
 
 @media screen and (min-width:320px) and (max-width:700px){

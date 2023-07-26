@@ -34,7 +34,7 @@ aside{
     background-repeat: no-repeat;
 }
 #opc_usuario{
-    width: 80%;
+    width: 90%;
     margin-top: 90px;
     display: flex;
     flex-direction: row;
@@ -43,14 +43,16 @@ aside{
     height: 120px;
 }
 #foto_perfil{
-    background-image: url("/img/usuario.png");
-    background-size: cover;
-    width: 100px;
+    background-image: url("/img/usuario2.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 90px;
     height: 65px;
 }
 #nomb_usuario{
     text-decoration: none;
-    font-size: 30px;
+    font-size: 26px;
     color: #e1e1e1;
     cursor: pointer;
     position: relative;
