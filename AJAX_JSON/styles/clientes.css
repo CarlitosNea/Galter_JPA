@@ -245,4 +245,17 @@ select{
         grid-gap: 45px;
         grid-auto-rows: minmax(100px, auto);
     }
+    table{
+        margin-top: 20px;
+        width: 100%;
+    }
+    th{
+        font-size: 10px;
+        padding-bottom: 5px;
+    }
+    td{
+        font-size: 15px;
+        text-align: center;
+        padding-top: 15px;
+    }
 }
