@@ -19,24 +19,21 @@ public class Material {
     private String nomb_mate;
 
     @Column(nullable = false)
-    private Double cant_mate;
+    private float cant_mate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "proveedor",referencedColumnName = "nombre_proveedor", nullable = false)
+    @JoinColumn(name = "nombre_proveedor",referencedColumnName = "nombre_proveedor", nullable = false)
     @Fetch(FetchMode.JOIN)
-    private Proveedor proveedor;
-
-
+    private Proveedor proveedor_mate;
 
     // Creacion de constructores
-    public Material(String codi_mate, String nomb_mate, Double cant_mate, Proveedor proveedor) {
+    public Material() {
+    }
+    public Material(String codi_mate, String nomb_mate, float cant_mate, Proveedor proveedor_mate) {
         this.setCodi_mate(codi_mate);
         this.setNomb_mate(nomb_mate);
         this.setCant_mate(cant_mate);
-        this.setProveedor(proveedor);
-    }
-
-    public Material() {
+        this.setProveedor_mate(proveedor_mate);
     }
 
 
@@ -57,20 +54,20 @@ public class Material {
         this.nomb_mate = nomb_mate;
     }
 
-    public Double getCant_mate() {
+    public float getCant_mate() {
         return cant_mate;
     }
 
-    public void setCant_mate(Double cant_mate) {
+    public void setCant_mate(float cant_mate) {
         this.cant_mate = cant_mate;
     }
 
-    public String getProveedor() {
-        return proveedor.getNombre_proveedor();
+    public String getProveedor_mate() {
+        return proveedor_mate.getNombre_proveedor();
     }
 
-    public void setProveedor(Proveedor proveedor) {
-        this.proveedor = proveedor;
+    public void setProveedor_mate(Proveedor proveedor_mate) {
+        this.proveedor_mate = proveedor_mate;
     }
 
 
@@ -81,7 +78,7 @@ public class Material {
                 "codi_mate=" + codi_mate +
                 ", nomb_mate=" + nomb_mate  +
                 ", cant_mate=" + cant_mate +
-                ", proveedor=" + proveedor +
+                ", proveedor=" + proveedor_mate.getNombre_proveedor() +
                 '}';
     }
 }
