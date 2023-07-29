@@ -38,7 +38,7 @@ public class Service_Material {
     public String insertar_Mate(String prov, Material mate){
         if (repo_proveedor.findById(prov).isPresent()){
             Proveedor Prov = repo_proveedor.findById(prov).get();
-            mate.setProveedor(Prov);
+            mate.setProveedor_mate(Prov);
             if (repositorio.findById(mate.getCodi_mate()).isPresent())
                 return "El codigo del material ya existe";
             else {
@@ -52,16 +52,21 @@ public class Service_Material {
 
     }
 
-
     // Metodo actualizar
-    public String update_Mate(Material mate){
-        if (repositorio.findById(mate.getCodi_mate()).isPresent()){
-            repositorio.save(mate);
-            return "Actualizado exitosamente";
+    public String update_Mate(String prov, Material mate){
+        if (repo_proveedor.findById(prov).isPresent()){
+            Proveedor Prov = repo_proveedor.findById(prov).get();
+            mate.setProveedor_mate(Prov);
+            if (repositorio.findById(mate.getCodi_mate()).isPresent()){
+                repositorio.save(mate);
+                return "Actualizado exitosamente";
+            }
+            else
+                return "El material no existe";
         }
-        else
-            return "Datos mal ingresados";
-
+        else {
+            return "Datos de Proveedor mal ingresados";
+        }
     }
 
 

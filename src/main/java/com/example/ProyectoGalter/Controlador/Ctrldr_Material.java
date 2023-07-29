@@ -32,9 +32,9 @@ public class Ctrldr_Material {
         return servicioM.insertar_Mate(prov, mate);
     }
 
-    @PostMapping("/actualizarMaterial")
-    public String actualizar_Mate(@RequestBody Material mate){
-        return servicioM.update_Mate(mate);
+    @PutMapping("/actualizarMaterial/{prov}")
+    public String actualizar_Mate(@PathVariable("prov")String prov, @RequestBody Material mate){
+        return servicioM.update_Mate(prov, mate);
     }
 
     @DeleteMapping("/eliminarMaterial/{codigo}")

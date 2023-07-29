@@ -51,7 +51,7 @@ $(document).ready(function(){
                     fila.append('<td>' + res[i].codi_mate + '</td>');
                     fila.append('<td>' + res[i].nomb_mate + '</td>');
                     fila.append('<td>' + res[i].cant_mate + '</td>');
-                    fila.append('<td>' + res[i].proveedor + '</td>');
+                    fila.append('<td>' + res[i].proveedor_mate + '</td>');
                     tabla.append(fila);
                 }
             }
@@ -78,13 +78,15 @@ $(document).ready(function(){
             codi_mate: $('#codigo_input_novo').val(),
             nomb_mate: $('#nombre_input_novo').val(),
             cant_mate: $('#cant_input_novo').val(),
-            proveedor: $('#prov_input_novo').val(),
         };
         let datosEnvio = JSON.stringify(datos);
+        let proveedor = $('#prov_input_novo option:selected').text();
         console.log(datos);
         console.log(datosEnvio);
+        console.log(proveedor);
+        
         $.ajax({
-            url: "http://localhost:8080/insertarProveedor",
+            url: "http://localhost:8080/insertarProveedor/"+proveedor,
             type: "POST",
             data: datosEnvio,
             contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"

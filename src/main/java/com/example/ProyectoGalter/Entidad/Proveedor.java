@@ -19,19 +19,28 @@ public class Proveedor {
     private String telefono_proveedor;
 
 
-    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "proveedor_mate", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Material> material;
 
 
 
     // Creacion de constructores
 
-    public Proveedor(String nombre_proveedor, String telefono_proveedor) {
-        this.nombre_proveedor = nombre_proveedor;
-        this.telefono_proveedor = telefono_proveedor;
+    public Proveedor() {
     }
 
-    public Proveedor() {
+    public Set<Material> getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Set<Material> material) {
+        this.material = material;
+    }
+
+    public Proveedor(String nombre_proveedor, String telefono_proveedor, Set<Material> material) {
+        this.nombre_proveedor = nombre_proveedor;
+        this.telefono_proveedor = telefono_proveedor;
+        this.material = material;
     }
 
 
@@ -61,6 +70,7 @@ public class Proveedor {
         return "Proveedor{" +
                 "nombre_proveedor=" + nombre_proveedor +
                 ", telefono_proveedor=" + telefono_proveedor +
+                ", material=" + material +
                 '}';
     }
 }
