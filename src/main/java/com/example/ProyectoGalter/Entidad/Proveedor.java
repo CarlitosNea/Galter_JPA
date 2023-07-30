@@ -29,14 +29,6 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Set<Material> getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Set<Material> material) {
-        this.material = material;
-    }
-
     public Proveedor(String nombre_proveedor, String telefono_proveedor, Set<Material> material) {
         this.nombre_proveedor = nombre_proveedor;
         this.telefono_proveedor = telefono_proveedor;
@@ -62,6 +54,13 @@ public class Proveedor {
         this.telefono_proveedor = telefono_proveedor;
     }
 
+    public Set<Material> getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Set<Material> material) {
+        this.material = material;
+    }
 
     // To String
 
@@ -70,7 +69,7 @@ public class Proveedor {
         return "Proveedor{" +
                 "nombre_proveedor=" + nombre_proveedor +
                 ", telefono_proveedor=" + telefono_proveedor +
-                ", material=" + material +
+                ", materiales=" + material +
                 '}';
     }
 }

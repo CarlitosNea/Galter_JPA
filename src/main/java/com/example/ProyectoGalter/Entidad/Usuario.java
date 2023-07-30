@@ -2,6 +2,8 @@ package com.example.ProyectoGalter.Entidad;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -24,19 +26,22 @@ public class Usuario {
     @Column(nullable = false)
     private int tipo_usuario;
 
+    @OneToMany(mappedBy = "usuario_ped", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Pedido> pedido;
+
 
     // Creacion de constructores
 
+    public Usuario() {
+    }
 
-    public Usuario(String codi_usuario, String nombre_usuario, String correo_usuario, String pass_usuario, int tipo_usuario) {
+    public Usuario(String codi_usuario, String nombre_usuario, String correo_usuario, String pass_usuario, int tipo_usuario, Set<Pedido> pedido) {
         this.codi_usuario = codi_usuario;
         this.nombre_usuario = nombre_usuario;
         this.correo_usuario = correo_usuario;
         this.pass_usuario = pass_usuario;
         this.tipo_usuario = tipo_usuario;
-    }
-
-    public Usuario() {
+        this.pedido = pedido;
     }
 
 
@@ -82,6 +87,13 @@ public class Usuario {
         this.tipo_usuario = tipo_usuario;
     }
 
+    public Set<Pedido> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Set<Pedido> pedido) {
+        this.pedido = pedido;
+    }
 
     // To String
 
@@ -94,6 +106,7 @@ public class Usuario {
                 ", correo_usuario='" + correo_usuario + '\'' +
                 ", pass_usuario='" + pass_usuario + '\'' +
                 ", tipo_usuario=" + tipo_usuario +
+                ", pedidos=" + pedido +
                 '}';
     }
 }

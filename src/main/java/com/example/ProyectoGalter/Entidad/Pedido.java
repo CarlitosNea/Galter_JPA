@@ -1,8 +1,9 @@
 package com.example.ProyectoGalter.Entidad;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
-import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -10,20 +11,22 @@ import java.util.Date;
 public class Pedido {
 
     @Id
-    @Column(unique = true, length = 10)
-    private String id_pedido;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_pedido;
 
-    @ManyToOne
-    @JoinColumn(name="cliente",referencedColumnName = "id_cliente")
-    private Cliente cliente;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente", nullable = false)
+    @Fetch(FetchMode.JOIN)
+    private Cliente cliente_ped;
 
-    @ManyToOne
-    @JoinColumn(name = "producto", referencedColumnName = "codi_prod")
-    private Producto producto;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "codi_prod", referencedColumnName = "codi_prod", nullable = false)
+    private Producto producto_ped;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario", referencedColumnName = "codi_usuario")
-    private Usuario usuario;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "codi_usuario", referencedColumnName = "codi_usuario", nullable = false)
+    @Fetch(FetchMode.JOIN)
+    private Usuario usuario_ped;
 
     @Column(nullable = false)
     private int tiempo_pedido;
@@ -39,11 +42,11 @@ public class Pedido {
 
     // Constructores
 
-    public Pedido(String id_pedido, Cliente cliente, Producto producto, Usuario usuario, int tiempo_pedido, Date fecha_encargo, Date fecha_entrega) {
+    public Pedido(Integer id_pedido, Cliente cliente_ped, Producto producto_ped, Usuario usuario_ped, int tiempo_pedido, Date fecha_encargo, Date fecha_entrega) {
         this.id_pedido = id_pedido;
-        this.cliente = cliente;
-        this.producto = producto;
-        this.usuario = usuario;
+        this.cliente_ped = cliente_ped;
+        this.producto_ped = producto_ped;
+        this.usuario_ped = usuario_ped;
         this.tiempo_pedido = tiempo_pedido;
         this.fecha_encargo = fecha_encargo;
         this.fecha_entrega = fecha_entrega;
@@ -56,45 +59,30 @@ public class Pedido {
     // Metodos GET & SET
 
 
-    public String getId_pedido() {
+    public Integer getId_pedido() {
         return id_pedido;
     }
 
-    public void setId_pedido(String id_pedido) {
+    public void setId_pedido(Integer id_pedido) {
         this.id_pedido = id_pedido;
     }
 
-    public String getCliente() {
-        if (cliente != null) {
-            return cliente.getId_cliente();
-        }
-        return null;
+    public String getCliente_ped() {return cliente_ped.getNombre_cliente();}
+
+    public void setCliente_ped(Cliente cliente_ped) {
+        this.cliente_ped = cliente_ped;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public String getProducto_ped() {return producto_ped.getCodi_prod();}
+
+    public void setProducto_ped(Producto producto_ped) {
+        this.producto_ped = producto_ped;
     }
 
-    public String getProducto() {
-        if (producto != null) {
-            return producto.getCodi_prod();
-        }
-        return null;
-    }
+    public String getUsuario_ped() {return usuario_ped.getNombre_usuario();}
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    public String getUsuario() {
-        if (usuario != null) {
-            return usuario.getCodi_usuario();
-        }
-        return null;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario_ped(Usuario usuario_ped) {
+        this.usuario_ped = usuario_ped;
     }
 
     public int getTiempo_pedido() {
@@ -129,9 +117,9 @@ public class Pedido {
     public String toString() {
         return "Pedido{" +
                 "id_pedido='" + id_pedido + '\'' +
-                ", cliente=" + cliente +
-                ", producto=" + producto +
-                ", usuario=" + usuario +
+                ", cliente=" + cliente_ped.getNombre_cliente() +
+                ", producto=" + producto_ped.getCodi_prod() +
+                ", usuario=" + usuario_ped.getNombre_usuario() +
                 ", tiempo_pedido=" + tiempo_pedido +
                 ", fecha_encargo=" + fecha_encargo +
                 ", fecha_entrega=" + fecha_entrega +

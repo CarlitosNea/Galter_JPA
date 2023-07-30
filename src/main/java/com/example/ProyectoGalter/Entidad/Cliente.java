@@ -2,12 +2,13 @@ package com.example.ProyectoGalter.Entidad;
 
 
 import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "cliente")
 public class Cliente {
 
-
+    // Creacion de columnas
     @Id
     @Column(unique = false)
     private String id_cliente;
@@ -24,13 +25,17 @@ public class Cliente {
     @Column(unique = true, length = 50)
     private String direccion;
 
+    @OneToMany(mappedBy = "cliente_ped", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Pedido> pedido;
 
-    public Cliente(String id_cliente, String nombre_cliente, String telefono_cliente, String representante_cliente, String direccion) {
+
+    public Cliente(String id_cliente, String nombre_cliente, String telefono_cliente, String representante_cliente, String direccion, Set<Pedido> pedido) {
         this.id_cliente = id_cliente;
         this.nombre_cliente = nombre_cliente;
         this.telefono_cliente = telefono_cliente;
         this.representante_cliente = representante_cliente;
         this.direccion = direccion;
+        this.pedido = pedido;
     }
 
 
@@ -78,6 +83,14 @@ public class Cliente {
         this.direccion = direccion;
     }
 
+    public Set<Pedido> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Set<Pedido> pedido) {
+        this.pedido = pedido;
+    }
+
 
     @Override
     public String toString() {
@@ -87,6 +100,7 @@ public class Cliente {
                 ", telefono_cliente='" + telefono_cliente + '\'' +
                 ", representante_cliente='" + representante_cliente + '\'' +
                 ", direccion='" + direccion + '\'' +
+                ", pedidos=" + pedido +
                 '}';
     }
 }

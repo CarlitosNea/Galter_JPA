@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "material")
 public class Material {
@@ -26,16 +28,21 @@ public class Material {
     @Fetch(FetchMode.JOIN)
     private Proveedor proveedor_mate;
 
+
+    @OneToMany(mappedBy = "material_prod", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Producto> producto;
+
     // Creacion de constructores
     public Material() {
     }
-    public Material(String codi_mate, String nomb_mate, float cant_mate, Proveedor proveedor_mate) {
-        this.setCodi_mate(codi_mate);
-        this.setNomb_mate(nomb_mate);
-        this.setCant_mate(cant_mate);
-        this.setProveedor_mate(proveedor_mate);
-    }
 
+    public Material(String codi_mate, String nomb_mate, float cant_mate, Proveedor proveedor_mate, Set<Producto> producto) {
+        this.codi_mate = codi_mate;
+        this.nomb_mate = nomb_mate;
+        this.cant_mate = cant_mate;
+        this.proveedor_mate = proveedor_mate;
+        this.producto = producto;
+    }
 
     // Metodos GET & SET
     public String getCodi_mate() {
@@ -70,6 +77,13 @@ public class Material {
         this.proveedor_mate = proveedor_mate;
     }
 
+    public Set<Producto> getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Set<Producto> producto) {
+        this.producto = producto;
+    }
 
     // To String
     @Override
@@ -79,6 +93,7 @@ public class Material {
                 ", nomb_mate=" + nomb_mate  +
                 ", cant_mate=" + cant_mate +
                 ", proveedor=" + proveedor_mate.getNombre_proveedor() +
+                ", productos=" + producto +
                 '}';
     }
 }
