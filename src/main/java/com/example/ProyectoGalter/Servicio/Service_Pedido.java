@@ -32,7 +32,7 @@ public class Service_Pedido {
 
     // Metodo insertar
     public String insertar_Ped(Pedido ped){
-        if (repositorio.findById(ped.getId_pedido()).isPresent())
+        if (repositorio.findById(String.valueOf(ped.getId_pedido())).isPresent())
             return "Datos mal ingresados";
         else {
             repositorio.save(ped);
@@ -43,7 +43,7 @@ public class Service_Pedido {
 
     // Metodo actualizar
     public String update_Ped(Pedido ped){
-        if (repositorio.findById(ped.getId_pedido()).isPresent()){
+        if (repositorio.findById(String.valueOf(ped.getId_pedido())).isPresent()){
             repositorio.save(ped);
             return "Actualizado exitosamente";
         }

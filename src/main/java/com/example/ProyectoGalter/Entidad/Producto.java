@@ -1,6 +1,11 @@
 package com.example.ProyectoGalter.Entidad;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import java.util.Set;
+
 @Entity
 @Table(name = "producto")
 public class Producto {
@@ -17,29 +22,30 @@ public class Producto {
     private int tiempo_prod;
 
     @Column(nullable = false)
-    private Double long_prod;
+    private float long_prod;
 
-    @ManyToOne
-    @JoinColumn(name = "material_prod",referencedColumnName = "codi_mate")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "codi_mate",referencedColumnName = "codi_mate", nullable = false)
+    @Fetch(FetchMode.JOIN)
     private Material material_prod;
 
     @Column(nullable = false)
     private int prec_prod;
 
 
-    @ManyToOne
-    @JoinColumn(referencedColumnName = "codi_prod")
-    private Producto producto;
+    @OneToMany(mappedBy = "producto_ped", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Pedido> pedido;
 
 
     // Generacion de constructores
-    public Producto(String codi_prod, String nomb_prod, int tiempo_prod, Double long_prod, Material material_prod, int prec_prod) {
+    public Producto(String codi_prod, String nomb_prod, int tiempo_prod, float long_prod, Material material_prod, int prec_prod, Set<Pedido> pedido) {
         this.codi_prod = codi_prod;
         this.nomb_prod = nomb_prod;
         this.tiempo_prod = tiempo_prod;
         this.long_prod = long_prod;
         this.material_prod = material_prod;
         this.prec_prod = prec_prod;
+        this.pedido = pedido;
     }
 
     public Producto() {
@@ -71,21 +77,15 @@ public class Producto {
         this.tiempo_prod = tiempo_prod;
     }
 
-    public Double getLong_prod() {
+    public float getLong_prod() {
         return long_prod;
     }
 
-    public void setLong_prod(Double long_prod) {
+    public void setLong_prod(float long_prod) {
         this.long_prod = long_prod;
     }
 
-    public String getMaterial_prod() {
-        if (material_prod != null) {
-            return material_prod.getCodi_mate();
-        }
-        return null;
-
-    }
+    public String getMaterial_prod() {return material_prod.getCodi_mate();}
 
     public void setMaterial_prod(Material material_prod) {
         this.material_prod = material_prod;
@@ -99,6 +99,14 @@ public class Producto {
         this.prec_prod = prec_prod;
     }
 
+    public Set<Pedido> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Set<Pedido> pedido) {
+        this.pedido = pedido;
+    }
+
 
     // To String
     @Override
@@ -108,8 +116,9 @@ public class Producto {
                 ", nomb_prod='" + nomb_prod + '\'' +
                 ", tiempo_prod=" + tiempo_prod +
                 ", long_prod=" + long_prod +
-                ", material_prod=" + material_prod +
+                ", material_prod=" + material_prod.getCodi_mate() +
                 ", prec_prod=" + prec_prod +
+                ", pedidos=" + pedido +
                 '}';
     }
 }
