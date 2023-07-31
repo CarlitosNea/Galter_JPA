@@ -26,14 +26,14 @@ public class Ctrldr_Pedido {
     }
 
 
-    @PostMapping("/insertarPedido")
-    public String insertar_Ped(@RequestBody Pedido ped){
-        return servicioP.insertar_Ped(ped);
+    @PostMapping("/insertarPedido/{cli}/{prod}/{usu}")
+    public String insertar_Ped(@PathVariable("cli") String cli, @PathVariable("prod") String prod, @PathVariable("usu") String usu,@RequestBody Pedido ped){
+        return servicioP.insertar_Ped(cli,prod,usu,ped);
     }
 
-    @PostMapping("/actualizarPedido")
-    public String actualizar_Ped(@RequestBody Pedido ped){
-        return servicioP.update_Ped(ped);
+    @PostMapping("/actualizarPedido/{cli}/{prod}/{usu}")
+    public String actualizar_Ped(@PathVariable("cli") String cli, @PathVariable("prod") String prod, @PathVariable("usu") String usu,@RequestBody Pedido ped){
+        return servicioP.update_Ped(cli,prod,usu,ped);
     }
 
     @DeleteMapping("/eliminarPedido/{codigo}")
