@@ -28,15 +28,15 @@ public class Ctrldr_Producto {
     }
 
 
-    @PostMapping("/insertarProd")
-    public String insertar_Prod(@RequestBody Producto prod){
-        return servicioProd.insertar_Prod(prod);
+    @PostMapping("/insertarProd/{mate}")
+    public String insertar_Prod(@PathVariable("mate") String mate,@RequestBody Producto prod){
+        return servicioProd.insertar_Prod(mate, prod);
     }
 
 
-    @PostMapping("/actualizarProducto")
-    public String actualizar_Prod(@RequestBody Producto prod){
-        return servicioProd.update_Prod(prod);
+    @PutMapping("/actualizarProducto/{mate}")
+    public String actualizar_Prod(@PathVariable("mate") String mate,@RequestBody Producto prod){
+        return servicioProd.update_Prod(mate, prod);
     }
 
 

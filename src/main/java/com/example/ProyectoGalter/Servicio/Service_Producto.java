@@ -1,6 +1,9 @@
 package com.example.ProyectoGalter.Servicio;
 
+import com.example.ProyectoGalter.Entidad.Material;
 import com.example.ProyectoGalter.Entidad.Producto;
+import com.example.ProyectoGalter.Entidad.Proveedor;
+import com.example.ProyectoGalter.Repositorio.Repo_Material;
 import com.example.ProyectoGalter.Repositorio.Repo_Producto;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -10,8 +13,10 @@ public class Service_Producto {
 
     // Llamado del repositorio
     private Repo_Producto repositorio;
-    public Service_Producto(Repo_Producto repositorio){
+    private Repo_Material repo_material;
+    public Service_Producto(Repo_Producto repositorio, Repo_Material repo_material){
         this.repositorio = repositorio;
+        this.repo_material = repo_material;
     }
 
 
@@ -31,25 +36,40 @@ public class Service_Producto {
 
 
     // Metodo insertar
-    public String insertar_Prod(Producto prod){
-        if (repositorio.findById(prod.getCodi_prod()).isPresent())
-            return "Datos mal ingresados";
-        else {
-            repositorio.save(prod);
-            return "Registrado exitosamente";
+
+    public String insertar_Prod(String mate, Producto prod){
+        if (repo_material.findById(mate).isPresent()){
+            Material Mate = repo_material.findById(mate).get();
+            prod.setMaterial_prod(Mate);
+            if (repositorio.findById(prod.getCodi_prod()).isPresent())
+                return "El codigo del producto ya existe";
+            else {
+                repositorio.save(prod);
+                return "Registrado exitosamente";
+            }
         }
+        else {
+            return "Datos de Material mal ingresados";
+        }
+
     }
 
 
     // Metodo actualizar
-    public String update_Prod(Producto prod){
-        if (repositorio.findById(prod.getCodi_prod()).isPresent()){
-            repositorio.save(prod);
-            return "Actualizado exitosamente";
+    public String update_Prod(String mate, Producto prod){
+        if (repo_material.findById(mate).isPresent()){
+            Material Mate = repo_material.findById(mate).get();
+            prod.setMaterial_prod(Mate);
+            if (repositorio.findById(prod.getCodi_prod()).isPresent()){
+                repositorio.save(prod);
+                return "Actualizado exitosamente";
+            }
+            else
+                return "El producto no existe";
         }
-        else
-            return "Datos mal ingresados";
-
+        else {
+            return "Datos deL Material mal ingresados";
+        }
     }
 
 

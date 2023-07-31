@@ -83,27 +83,23 @@ $(document).ready(function(){
     $('#enviar').on('click', function() {
         let datos = {
             codi_prod: $('#codigo_input_novo').val(),
-            nomb_prod: $('#nombre_input_novo').val(),
-            tiempo_prod: $('#time_input_novo').val(),
             long_prod: $('#long_input_novo').val(),
-            material_prod: $('#mat_input_novo').val(),
+            nomb_prod: $('#nombre_input_novo').val(),
             prec_prod: $('#precio_input_novo').val(),
-        };
-        let datosEnvio = JSON.stringify(datos);
-        console.log(datos);
-        console.log(datosEnvio);
+            tiempo_prod: $('#time_input_novo').val(),
+        }
+        let datosEnvio = JSON.stringify(datos)
+        let material_prod = $('#mat_input_novo option:selected').val()
+        console.log(datos)
+        console.log(datosEnvio)
         $.ajax({
-            url: "http://localhost:8080/insertarProd",
+            url: "http://localhost:8080/insertarProd/"+material_prod,
             type: "POST",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
-            dataType: "json", // Corregido: dataType en minúscula
+            contentType: "application/JSON",
+            dataType: "json",
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Registrado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
@@ -118,24 +114,20 @@ $(document).ready(function(){
             nomb_prod: $('#nombre_input_novo').val(),
             tiempo_prod: $('#time_input_novo').val(),
             long_prod: $('#long_input_novo').val(),
-            material_prod: $('#mat_input_novo').val(),
             prec_prod: $('#precio_input_novo').val(),
         };
-        let datosEnvio = JSON.stringify(datos);
+        let datosEnvio = JSON.stringify(datos)
+        let material_prod = $('#mat_input_novo').val()
         console.log(datos);
         console.log(datosEnvio);
         $.ajax({
-            url: "http://localhost:8080/actualizarProducto",
-            type: "POST",
+            url: "http://localhost:8080/actualizarProducto"+material_prod,
+            type: "PUT",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
-            dataType: "json", // Corregido: dataType en minúscula
+            contentType: "application/JSON", 
+            dataType: "json",
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Actualizado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);

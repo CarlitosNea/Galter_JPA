@@ -76,30 +76,27 @@ $(document).ready(function(){
     $('#enviar').on('click', function() {
         let datos = {
             codi_mate: $('#codigo_input_novo').val(),
+            cant_mate: parseFloat($('#cant_input_novo').val()),
             nomb_mate: $('#nombre_input_novo').val(),
-            cant_mate: $('#cant_input_novo').val(),
-        };
-        let datosEnvio = JSON.stringify(datos);
-        let proveedor = $('#prov_input_novo option:selected').text();
-        console.log(datos);
-        console.log(datosEnvio);
-        console.log(proveedor);
+            
+        }
+        let datosEnvio = JSON.stringify(datos)
+        let proveedor = $('#prov_input_novo option:selected').val()
+        console.log(datos)
+        console.log(datosEnvio)
+        console.log(proveedor)
         
         $.ajax({
-            url: "http://localhost:8080/insertarProveedor/"+proveedor,
+            url: "http://localhost:8080/insertarMaterial/"+proveedor,
             type: "POST",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
-            dataType: "json", // Corregido: dataType en minúscula
+            contentType: "application/JSON",
+            dataType: "json",
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Registrado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
+                console.log(textStatus, errorThrown)
             }
         });
     });
@@ -109,24 +106,20 @@ $(document).ready(function(){
         let datos = {
             codi_mate: $('#codigo_input_act').val(),
             nomb_mate: $('#nombre_input_act').val(),
-            cant_mate: $('#cant_input_act').val(),
-            proveedor: $('#prov_input_act').val(),
-        };
-        let datosEnvio = JSON.stringify(datos);
-        console.log(datos);
-        console.log(datosEnvio);
+            cant_mate: parseFloat($('#cant_input_act').val()),
+        }
+        let datosEnvio = JSON.stringify(datos)
+        let proveedor = $('#prov_input_act').val()
+        console.log(datos)
+        console.log(datosEnvio)
         $.ajax({
-            url: "http://localhost:8080/actualizarMaterial",
-            type: "POST",
+            url: "http://localhost:8080/actualizarMaterial/"+proveedor,
+            type: "PUT",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
-            dataType: "json", // Corregido: dataType en minúscula
+            contentType: "application/JSON",
+            dataType: "json",
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Actualizado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
