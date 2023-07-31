@@ -33,7 +33,7 @@ public class Ctrldr_Cliente {
     }
 
 
-    @PostMapping("/actualizarCliente")
+    @PutMapping("/actualizarCliente")
     public String actualiazar_cli(@RequestBody Cliente cli){
         return serviciosC.actualizar_cli(cli);
     }

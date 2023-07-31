@@ -48,8 +48,8 @@ $(document).ready(function(){
     $('#enviar').on('click', function() {
         let datos = {
             codi_usuario: $('#codigo_input_novo').val(),
-            nombre_usuario: $('#nombre_input_novo').val(),
             correo_usuario: $('#email_input_novo').val(),
+            nombre_usuario: $('#nombre_input_novo').val(),
             pass_usuario: $('#pass_input_novo').val(),
             tipo_usuario: $('#type_input_novo').val(),
         };
@@ -60,14 +60,10 @@ $(document).ready(function(){
             url: "http://localhost:8080/insertarUsusario",
             type: "POST",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
+            contentType: "application/JSON", // Corregido: el tipo de contenido debe ser "application/json"
             dataType: "json", // Corregido: dataType en minúscula
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Registrado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
@@ -79,8 +75,8 @@ $(document).ready(function(){
     $('#actualizar').on('click', function() {
         let datos = {
             codi_usuario: $('#codigo_input_act').val(),
-            nombre_usuario: $('#nombre_input_act').val(),
             correo_usuario: $('#email_input_act').val(),
+            nombre_usuario: $('#nombre_input_act').val(),
             pass_usuario: $('#pass_input_act').val(),
             tipo_usuario: $('#type_input_act').val(),
         };
@@ -89,16 +85,12 @@ $(document).ready(function(){
         console.log(datosEnvio);
         $.ajax({
             url: "http://localhost:8080/actualizarUsuario",
-            type: "POST",
+            type: "PUT",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
+            contentType: "application/JSON", // Corregido: el tipo de contenido debe ser "application/json"
             dataType: "json", // Corregido: dataType en minúscula
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Actualizado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);

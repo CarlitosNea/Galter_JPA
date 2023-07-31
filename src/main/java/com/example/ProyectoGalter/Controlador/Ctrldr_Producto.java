@@ -34,7 +34,7 @@ public class Ctrldr_Producto {
     }
 
 
-    @PostMapping("/actualizarProducto/{mate}")
+    @PutMapping("/actualizarProducto/{mate}")
     public String actualizar_Prod(@PathVariable("mate") String mate,@RequestBody Producto prod){
         return servicioProd.update_Prod(mate, prod);
     }

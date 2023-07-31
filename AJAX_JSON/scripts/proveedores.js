@@ -49,14 +49,10 @@ $(document).ready(function(){
             url: "http://localhost:8080/insertarProveedor",
             type: "POST",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
-            dataType: "json", // Corregido: dataType en minúscula
+            contentType: "application/JSON", 
+            dataType: "json", 
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Registrado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);

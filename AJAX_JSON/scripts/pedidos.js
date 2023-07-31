@@ -23,9 +23,9 @@ $(document).ready(function(){
             for (let i = 0; i < res.length; i++) {
                 let fila = $('<tr></tr>');
                 fila.append('<td>' + res[i].id_pedido + '</td>');
-                fila.append('<td>' + res[i].cliente + '</td>');
-                fila.append('<td>' + res[i].producto + '</td>');
-                fila.append('<td>' + res[i].usuario + '</td>');
+                fila.append('<td>' + res[i].cliente_ped + '</td>');
+                fila.append('<td>' + res[i].producto_ped + '</td>');
+                fila.append('<td>' + res[i].usuario_ped + '</td>');
                 fila.append('<td>' + res[i].tiempo_pedido + '</td>');
                 fila.append('<td>' + res[i].fecha_encargo + '</td>');
                 fila.append('<td>' + res[i].fecha_entrega + '</td>');
@@ -124,7 +124,7 @@ $(document).ready(function(){
     let listaPed = document.querySelector('#codigo_input_novo')
         listaPed.innerHTML = ''
         $.ajax({
-            url: "http://localhost:8080/listaPedidos",
+            url: "http://localhost:8080/listarPedidos",
             type: "GET",
             datatype: "JSON",
             success: function(respuesta) {
@@ -155,28 +155,25 @@ $(document).ready(function(){
     $('#enviar').on('click', function() {
         let datos = {
             id_pedido: 0,
-            cliente: $('#cli_input_novo').val(),
-            producto: $('#prod_input_novo').val(),
-            usuario: $('#usu_input_novo').val(),
-            tiempo_pedido: $('#time_input_novo').val(),
             fecha_encargo: $('#encargo_input_novo').val(),
             fecha_entrega: $('#entrega_input_novo').val(),
-        };
-        let datosEnvio = JSON.stringify(datos);
+            tiempo_pedido: $('#time_input_novo').val(),
+        }
+        let datosEnvio = JSON.stringify(datos)
+        let cliente = $('#cli_input_novo').val()
+        let producto = $('#prod_input_novo').val()
+        let usuario = $('#usu_input_novo').val()
+
         console.log(datos);
         console.log(datosEnvio);
         $.ajax({
-            url: "http://localhost:8080/insertarPedido",
+            url: "http://localhost:8080/insertarPedido/"+cliente+"/"+producto+"/"+usuario,
             type: "POST",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
-            dataType: "json", // Corregido: dataType en minúscula
+            contentType: "application/JSON",
+            dataType: "json", 
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Registrado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
@@ -187,29 +184,25 @@ $(document).ready(function(){
 
     $('#actualizar').on('click', function() {
         let datos = {
-            id_pedido: $('#codigo_input_act').val(),
-            cliente: $('#cli_input_act').val(),
-            producto: $('#prod_input_act').val(),
-            usuario: $('#usu_input_act').val(),
-            tiempo_pedido: $('#time_input_act').val(),
+            id_pedido: 0,
             fecha_encargo: $('#encargo_input_act').val(),
             fecha_entrega: $('#entrega_input_act').val(),
-        };
-        let datosEnvio = JSON.stringify(datos);
+            tiempo_pedido: $('#time_input_act').val(),
+        }
+        let datosEnvio = JSON.stringify(datos)
+        let cliente = $('#cli_input_act').val()
+        let producto = $('#prod_input_act').val()
+        let usuario = $('#usu_input_act').val()
         console.log(datos);
         console.log(datosEnvio);
         $.ajax({
-            url: "http://localhost:8080/actualizarPedido",
-            type: "POST",
+            url: "http://localhost:8080/actualizarPedido/"+cliente+"/"+producto+"/"+usuario,
+            type: "PUT",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
+            contentType: "application/JSON", // Corregido: el tipo de contenido debe ser "application/json"
             dataType: "json", // Corregido: dataType en minúscula
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Actualizado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);

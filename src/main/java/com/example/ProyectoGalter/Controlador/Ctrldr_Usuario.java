@@ -35,7 +35,7 @@ public class Ctrldr_Usuario {
     }
 
 
-    @PostMapping("/actualizarUsuario")
+    @PutMapping("/actualizarUsuario")
     public String actualiazar_usu(@RequestBody Usuario usu){
         return serviciosU.actualizar_usu(usu);
     }

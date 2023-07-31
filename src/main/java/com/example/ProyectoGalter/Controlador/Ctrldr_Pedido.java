@@ -31,7 +31,7 @@ public class Ctrldr_Pedido {
         return servicioP.insertar_Ped(cli,prod,usu,ped);
     }
 
-    @PostMapping("/actualizarPedido/{cli}/{prod}/{usu}")
+    @PutMapping("/actualizarPedido/{cli}/{prod}/{usu}")
     public String actualizar_Ped(@PathVariable("cli") String cli, @PathVariable("prod") String prod, @PathVariable("usu") String usu,@RequestBody Pedido ped){
         return servicioP.update_Ped(cli,prod,usu,ped);
     }

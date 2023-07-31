@@ -10,7 +10,7 @@ public class Cliente {
 
     // Creacion de columnas
     @Id
-    @Column(unique = false)
+    @Column(unique = true)
     private String id_cliente;
 
     @Column(unique = true, length = 50)

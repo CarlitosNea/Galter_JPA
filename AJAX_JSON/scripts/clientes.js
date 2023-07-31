@@ -47,11 +47,11 @@ $(document).ready(function(){
 
     $('#enviar').on('click', function() {
         let datos = {
-            codi_usuario: $('#codigo_input_novo').val(),
-            nombre_cliente: $('#nombre_input_novo').val(),
-            telefono_cliente: $('#telefono_input_novo').val(),
-            representante_cliente: $('#rep_input_novo').val(),
+            id_cliente: $('#codigo_input_novo').val(),
             direccion: $('#direccion_input_novo').val(),
+            nombre_cliente: $('#nombre_input_novo').val(),
+            representante_cliente: $('#rep_input_novo').val(),
+            telefono_cliente: $('#telefono_input_novo').val(),
         };
         let datosEnvio = JSON.stringify(datos);
         console.log(datos);
@@ -60,14 +60,10 @@ $(document).ready(function(){
             url: "http://localhost:8080/insertarCliente",
             type: "POST",
             data: datosEnvio,
-            contentType: "application/json", // Corregido: el tipo de contenido debe ser "application/json"
+            contentType: "application/JSON", // Corregido: el tipo de contenido debe ser "application/json"
             dataType: "json", // Corregido: dataType en minúscula
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Registrado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
@@ -78,27 +74,23 @@ $(document).ready(function(){
 
     $('#actualizar').on('click', function() {
         let datos = {
-            codi_usuario: $('#codigo_input_act').val(),
-            nombre_cliente: $('#nombre_input_act').val(),
-            telefono_cliente: $('#telefono_input_act').val(),
-            representante_cliente: $('#rep_input_act').val(),
+            id_cliente: $('#codigo_input_act').val(),
             direccion: $('#direccion_input_act').val(),
+            nombre_cliente: $('#nombre_input_act').val(),
+            representante_cliente: $('#rep_input_act').val(),
+            telefono_cliente: $('#telefono_input_act').val(),
         };
         let datosEnvio = JSON.stringify(datos);
         console.log(datos);
         console.log(datosEnvio);
         $.ajax({
             url: "http://localhost:8080/actualizarCliente",
-            type: "POST",
+            type: "PUT",
             data: datosEnvio,
-            contentType: "application/json",
+            contentType: "application/JSON",
             dataType: "json", 
             success: function(respuesta) {
-                if (respuesta) {
-                    alert("Actualizado exitosamente");
-                } else {
-                    alert("error");
-                }
+                alert(respuesta)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
