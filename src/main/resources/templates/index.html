@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/static/styles/index.css">
     <title>Home</title>
 </head>
 <body>
+    <div sec:authorize="!isAuthenticated()">
+        <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">Log Out</a>
+    </div>
     <aside>
         <div id="logo"></div>
         <div id="info_usuario">
