@@ -1,6 +1,6 @@
 @font-face {
     font-family: tipografia;
-    src: url(/styles/JosefinSans-VariableFont_wght.ttf);
+    src: url(/static/styles/JosefinSans-VariableFont_wght.ttf);
 }
 body{
     display: flex;
@@ -16,7 +16,7 @@ aside{
     left: 30px;
     width: 20%;
     height: 100%;
-    background-image: url(/img/marek-piwnicki-fKjPKFeilfg-unsplash.jpg);
+    background-image: url(/static/img/marek-piwnicki-fKjPKFeilfg-unsplash.jpg);
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@ aside{
     margin-top: 10px;
     width: 250px;
     height: 90px;
-    background-image: url(/img/logo.png);
+    background-image: url(/static/img/logo.png);
     background-size:contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -187,28 +187,28 @@ section{
     margin-bottom: 5px;
 }
 #img_pedidos{
-    background-image: url("/img/pedido.png");
+    background-image: url("/static/img/pedido.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     width: 90%;
 }
 #img_productos{
-    background-image: url("/img/producto.png");
+    background-image: url("/static/img/producto.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     width: 80%;
 }
 #img_materiales{
-    background-image: url("/img/material.png");
+    background-image: url("/static/img/material.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     width: 80%;
 }
 #img_usuarios{
-    background-image: url("/img/usuarioh.png");
+    background-image: url("/static/img/usuarioh.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -216,14 +216,14 @@ section{
 }
 
 #img_proveedores{
-    background-image: url("/img/proveedor.png");
+    background-image: url("/static/img/proveedor.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 #img_clientes{
-    background-image: url("/img/cliente.png");
+    background-image: url("/static//img/cliente.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

@@ -10,9 +10,7 @@
     <div sec:authorize="!isAuthenticated()">
         <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
     </div>
-    <div sec:authorize="isAuthenticated()">
-        <a th:href="@{/logout}">Log Out</a>
-    </div>
+    
     <aside>
         <div id="logo"></div>
         <div id="info_usuario">
@@ -20,10 +18,10 @@
             <p id="nomb_usuario">Nombre Usuario</p>
             <p id="rol_usuario">Rol</p>
         </div>
-        <div id="opciones_perfil">
+        <div id="opciones_perfil" sec:authorize="isAuthenticated()">
             <a href="" id="link_micuenta">Mi cuenta</a>
             <a href="" id="link_mispedidos">Mis pedidos</a>
-            <a href="" id="log_out">Cerrar Sesion</a>
+            <a th:href="@{/logout}" id="log_out">Cerrar Sesion</a>
         </div>
     </aside>
     <main>

@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/scripts/usuarios.js"></script>
-    <link rel="stylesheet" href="/static/styles/usuarios.css">
-    <title>Usuarios Galter</title>
+    <script src="/static/scripts/productos.js"></script>
+    <link rel="stylesheet" href="/static/styles/productos.css">
+    <title>Productos Galter</title>
 </head>
 <body>
     <aside>
@@ -21,22 +21,22 @@
             <a href="/templates/clientes.html" id="links_tablas">Clientes</a>
             <a href="/templates/materiales.html" id="links_tablas">Materiales</a>
             <a href="/templates/pedidos.html" id="links_tablas">Pedidos</a>
-            <a href="/templates/productos.html" id="links_tablas">Productos</a>
-            <a href="/templates/proveedores.html" id="links_tablas">Provedoores</a>
+            <a href="/templates/proveedores.html" id="links_tablas">Proveedores</a>
+            <a href="/templates/usuarios.html" id="links_tablas">Usuarios</a>
         </div>
     </aside>
     <main>
-        <p id="titulo">USUARIOS</p>
+        <p id="titulo">PRODUCTOS</p>
         <table id="tabla_listar">
             <thead></thead>
             <tbody></tbody>
         </table>
         <section>
             <fieldset id="fieldset-buscar">
-                <legend>Buscar Usuario</legend>
-                    <form id="form_usu_busc">
+                <legend>Buscar Producto</legend>
+                    <form id="form_prod_busc">
                         <div id="sec_inputs">
-                            <p>Codigo del Usuario</p>
+                            <p>Id Producto</p>
                             <input type="text" id="id_input_buscar">
                             <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
                         </div>
@@ -45,27 +45,31 @@
             </fieldset>
 
             <fieldset id="fieldset-input">
-                <legend>Nuevo Usuario</legend>
-                    <form id="form_usu_novo" action="">
+                <legend>Nuevo Producto</legend>
+                    <form id="form_prod_novo" action="">
                         <div id="sec_inputs">
-                            <label for="">Codigo Usuario</label>
+                            <label for="">Codigo Producto</label>
                             <input type="text" id="codigo_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Nombre Usuario</label>
+                            <label for="">Nombre Producto</label>
                             <input type="text" id="nombre_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Correo Usuario</label>
-                            <input type="email" id="email_input_novo">
+                            <label for="">Tiempo Produccion</label>
+                            <input type="number" id="time_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Contraseña</label>
-                            <input type="text" id="pass_input_novo">
+                            <label for="">Longitud Producto</label>
+                            <input type="number" id="long_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Tipo de Usuario</label>
-                            <input type="number" id="type_input_novo">
+                            <label>Material</label>
+                            <select id="mat_input_novo"></select>
+                        </div>
+                        <div id="sec_inputs">
+                            <label for="">Precio Producto</label>
+                            <input type="number" id="precio_input_novo">
                         </div>
                         <button type="submit" class="btn btn-dark" id="enviar">Enviar</button>
                     </form>
@@ -73,10 +77,10 @@
             </fieldset>
 
             <fieldset id="fieldset-update">
-                <legend>Actualizar Usuario</legend>
-                    <form id="form_usu_act" action="">
+                <legend>Actualizar Producto</legend>
+                    <form id="form_prod_act" action="">
                         <div id="sec_inputs">
-                            <label for="">Codigo del Usuario</label>
+                            <label for="">Codigo del Producto</label>
                             <input type="text" id="codigo_input_act">
                         </div>
                         <div id="sec_inputs">
@@ -84,16 +88,20 @@
                             <input type="text" id="nombre_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Confirmar Correo</label>
-                            <input type="email" id="email_input_act">
+                            <label for="">Confirmar Tiempo</label>
+                            <input type="number" id="time_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Confirmar Contraseña</label>
-                            <input type="text" id="pass_input_act">
+                            <label for="">Confirmar Longitud</label>
+                            <input type="number" id="long_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Confirmar Tipo</label>
-                            <input type="number" id="type_input_act">
+                            <label>Confirmar Material</label>
+                            <select id="mat_input_act"></select>
+                        </div>
+                        <div id="sec_inputs">
+                            <label for="">Confirmar Precio</label>
+                            <input type="number" id="precio_input_act">
                         </div>
                         <button type="submit" class="btn btn-dark" id="actualizar">Actualizar</button>
                     </form>
@@ -101,16 +109,16 @@
             </fieldset>
 
             <fieldset id="fieldset-delete">
-                    <legend>Eliminar Usuario</legend>
-                    <form id="form_usu_delete" action="">
+                <legend>Eliminar Producto</legend>
+                    <form id="form_prod_delete" action="">
                         <div id="sec_inputs">
-                            <label for="">Codigo de Usuario</label>
-                            <input type="number" id="id_input_delete">
+                            <label for="">Id Producto</label>
+                            <input type="text" id="id_input_delete">
                         </div>
                         <button type="submit" class="btn btn-dark" id="eliminar">Eliminar</button>
                     </form>
                     <p id="resp_delete"></p>
-                </fieldset>
+            </fieldset>
         </section>
     </main>
 </body>

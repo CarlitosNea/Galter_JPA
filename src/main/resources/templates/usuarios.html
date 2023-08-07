@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/scripts/clientes.js"></script>
-    <link rel="stylesheet" href="/static/styles/clientes.css">
-    <title>Clientes Galter</title>
+    <script src="/static/scripts/usuarios.js"></script>
+    <link rel="stylesheet" href="/static/styles/usuarios.css">
+    <title>Usuarios Galter</title>
 </head>
 <body>
     <aside>
@@ -18,55 +18,54 @@
         </div>
         <div id="menu_tablas">
             <a href="/templates/index.html" id="links_tablas">Home</a>
+            <a href="/templates/clientes.html" id="links_tablas">Clientes</a>
             <a href="/templates/materiales.html" id="links_tablas">Materiales</a>
             <a href="/templates/pedidos.html" id="links_tablas">Pedidos</a>
             <a href="/templates/productos.html" id="links_tablas">Productos</a>
-            <a href="/templates/proveedores.html" id="links_tablas">Proveedores</a>
-            <a href="/templates/usuarios.html" id="links_tablas">Usuarios</a>
+            <a href="/templates/proveedores.html" id="links_tablas">Provedoores</a>
         </div>
     </aside>
     <main>
-        <p id="titulo">CLIENTES</p>
+        <p id="titulo">USUARIOS</p>
         <table id="tabla_listar">
             <thead></thead>
             <tbody></tbody>
         </table>
         <section>
             <fieldset id="fieldset-buscar">
-                <legend>Buscar Pedido</legend>
-                <form id="form_cli_busc">
-                    <div id="sec_inputs">
-                        <p>Id Pedido</p>
-                        <input type="text" id="id_input_buscar">
-                        <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
-                    </div>
-                    
-                </form>
-                <p id="resp_busqueda"></p>
+                <legend>Buscar Usuario</legend>
+                    <form id="form_usu_busc">
+                        <div id="sec_inputs">
+                            <p>Codigo del Usuario</p>
+                            <input type="text" id="id_input_buscar">
+                            <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
+                        </div>
+                    </form>
+                    <p id="resp_busqueda"></p>
             </fieldset>
 
             <fieldset id="fieldset-input">
-                <legend>Nuevo Cliente</legend>
-                    <form id="form_cli_novo" action="">
+                <legend>Nuevo Usuario</legend>
+                    <form id="form_usu_novo" action="">
                         <div id="sec_inputs">
-                            <label for="">Codigo Cliente</label>
+                            <label for="">Codigo Usuario</label>
                             <input type="text" id="codigo_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Nombre Cliente</label>
+                            <label for="">Nombre Usuario</label>
                             <input type="text" id="nombre_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Telefono Cliente</label>
-                            <input type="text" id="telefono_input_novo">
+                            <label for="">Correo Usuario</label>
+                            <input type="email" id="email_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label>Representante</label>
-                            <input type="text" id="rep_input_novo">
+                            <label for="">Contraseña</label>
+                            <input type="text" id="pass_input_novo">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Direccion Cliente</label>
-                            <input type="text" id="direccion_input_novo">
+                            <label for="">Tipo de Usuario</label>
+                            <input type="number" id="type_input_novo">
                         </div>
                         <button type="submit" class="btn btn-dark" id="enviar">Enviar</button>
                     </form>
@@ -74,10 +73,10 @@
             </fieldset>
 
             <fieldset id="fieldset-update">
-                <legend>Actualizar Cliente</legend>
-                    <form id="form_cli_act" action="">
+                <legend>Actualizar Usuario</legend>
+                    <form id="form_usu_act" action="">
                         <div id="sec_inputs">
-                            <label for="">Codigo del Cliente</label>
+                            <label for="">Codigo del Usuario</label>
                             <input type="text" id="codigo_input_act">
                         </div>
                         <div id="sec_inputs">
@@ -85,16 +84,16 @@
                             <input type="text" id="nombre_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Confirmar Telefono</label>
-                            <input type="text" id="telefono_input_act">
+                            <label for="">Confirmar Correo</label>
+                            <input type="email" id="email_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label>Confirmar Representante</label>
-                            <input type="text" id="rep_input_act">
+                            <label for="">Confirmar Contraseña</label>
+                            <input type="text" id="pass_input_act">
                         </div>
                         <div id="sec_inputs">
-                            <label for="">Confirmar Direccion</label>
-                            <input type="text" id="direccion_input_act">
+                            <label for="">Confirmar Tipo</label>
+                            <input type="number" id="type_input_act">
                         </div>
                         <button type="submit" class="btn btn-dark" id="actualizar">Actualizar</button>
                     </form>
@@ -102,16 +101,16 @@
             </fieldset>
 
             <fieldset id="fieldset-delete">
-                <legend>Eliminar Cliente</legend>
-                <form id="form_cli_delete" action="">
-                    <div id="sec_inputs">
-                        <label for="">Codigo Cliente</label>
-                        <input type="text" id="id_input_delete">
-                    </div>
-                    <button type="submit" class="btn btn-dark" id="eliminar">Eliminar</button>
-                </form>
-                <p id="resp_delete"></p>
-            </fieldset>
+                    <legend>Eliminar Usuario</legend>
+                    <form id="form_usu_delete" action="">
+                        <div id="sec_inputs">
+                            <label for="">Codigo de Usuario</label>
+                            <input type="number" id="id_input_delete">
+                        </div>
+                        <button type="submit" class="btn btn-dark" id="eliminar">Eliminar</button>
+                    </form>
+                    <p id="resp_delete"></p>
+                </fieldset>
         </section>
     </main>
 </body>
