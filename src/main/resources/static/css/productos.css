@@ -1,6 +1,6 @@
 @font-face {
     font-family: tipografia;
-    src: url(/static/styles/JosefinSans-VariableFont_wght.ttf);
+    src: url(/static/css/JosefinSans-VariableFont_wght.ttf);
 }
 body{
     display: flex;

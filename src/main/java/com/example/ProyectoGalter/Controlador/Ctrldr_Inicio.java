@@ -22,4 +22,9 @@ public class Ctrldr_Inicio {
         }
         return  "index";
     }
+
+    @GetMapping("/productos")
+    public String productosPage() {
+        return "productos";
+    }
 }

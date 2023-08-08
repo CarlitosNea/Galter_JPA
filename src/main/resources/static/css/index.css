@@ -1,6 +1,6 @@
 @font-face {
     font-family: tipografia;
-    src: url(/static/styles/JosefinSans-VariableFont_wght.ttf);
+    src: url(/static/css/JosefinSans-VariableFont_wght.ttf);
 }
 body{
     display: flex;
@@ -29,7 +29,7 @@ aside{
     margin-top: 10px;
     width: 250px;
     height: 90px;
-    background-image: url(/static/img/logo.png);
+    background-image: url(/img/logo.png);
     background-size:contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -223,7 +223,7 @@ section{
 }
 
 #img_clientes{
-    background-image: url("/static//img/cliente.png");
+    background-image: url("/static/img/cliente.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

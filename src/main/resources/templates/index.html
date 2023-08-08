@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles/index.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
     <title>Home</title>
 </head>
 <body>
@@ -26,14 +26,14 @@
     </aside>
     <main>
         <section>
-            <p id="titulo">SOFTWARE GALTER</p>
+            <p id="titulo" >SOFTWARE GALTER</p>
 
             <div id="tablas">
                 <a href="/templates/pedidos.html" id="pedidos">
                     <div id="img_pedidos"></div>
                     <div id="title_pedidos">Pedidos</div>
                 </a>
-                <a href="/templates/productos.html" id="productos">
+                <a th:href="@{/productos}" id="productos">
                     <div id="img_productos"></div>
                     <div id="title_productos">Productos</div>
                 </a>
