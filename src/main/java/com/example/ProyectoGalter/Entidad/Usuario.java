@@ -26,6 +26,15 @@ public class Usuario {
     @Column(nullable = false)
     private int tipo_usuario;
 
+    @Column(name = "img")
+    private String img;
+
+    @Column(name = "auth_id", unique = true)
+    private String auth_id;
+
+    @Column(name = "rol")
+    private String rol;
+
     @OneToMany(mappedBy = "usuario_ped", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Pedido> pedido;
 
@@ -35,15 +44,17 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String codi_usuario, String nombre_usuario, String correo_usuario, String pass_usuario, int tipo_usuario, Set<Pedido> pedido) {
+    public Usuario(String codi_usuario, String nombre_usuario, String correo_usuario, String pass_usuario, int tipo_usuario, String img, String auth_id, String rol, Set<Pedido> pedido) {
         this.codi_usuario = codi_usuario;
         this.nombre_usuario = nombre_usuario;
         this.correo_usuario = correo_usuario;
         this.pass_usuario = pass_usuario;
         this.tipo_usuario = tipo_usuario;
+        this.img = img;
+        this.auth_id = auth_id;
+        this.rol = rol;
         this.pedido = pedido;
     }
-
 
     // Metodos GET & SET
 
@@ -95,18 +106,44 @@ public class Usuario {
         this.pedido = pedido;
     }
 
-    // To String
+    public String getImg() {
+        return img;
+    }
 
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getAuth_id() {
+        return auth_id;
+    }
+
+    public void setAuth_id(String auth_id) {
+        this.auth_id = auth_id;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    // To String
 
     @Override
     public String toString() {
         return "Usuario{" +
-                "codi_usuario=" + codi_usuario +
+                "codi_usuario='" + codi_usuario + '\'' +
                 ", nombre_usuario='" + nombre_usuario + '\'' +
                 ", correo_usuario='" + correo_usuario + '\'' +
                 ", pass_usuario='" + pass_usuario + '\'' +
                 ", tipo_usuario=" + tipo_usuario +
-                ", pedidos=" + pedido +
+                ", img='" + img + '\'' +
+                ", auth_id='" + auth_id + '\'' +
+                ", rol ='" + rol + '\'' +
+                ", pedido=" + pedido +
                 '}';
     }
 }
