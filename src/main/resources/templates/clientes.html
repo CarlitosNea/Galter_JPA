@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/static/scripts/clientes.js"></script>
-    <link rel="stylesheet" href="/static/styles/clientes.css">
+    <script src="@{/scripts/clientes.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/clientes.css}">
     <title>Clientes Galter</title>
 </head>
 <body>
@@ -17,12 +17,12 @@
             <a href="" id="nomb_usuario">Nombre Usuario</a>
         </div>
         <div id="menu_tablas">
-            <a href="/templates/index.html" id="links_tablas">Home</a>
-            <a href="/templates/materiales.html" id="links_tablas">Materiales</a>
-            <a href="/templates/pedidos.html" id="links_tablas">Pedidos</a>
-            <a href="/templates/productos.html" id="links_tablas">Productos</a>
-            <a href="/templates/proveedores.html" id="links_tablas">Proveedores</a>
-            <a href="/templates/usuarios.html" id="links_tablas">Usuarios</a>
+            <a href="@{/templates/index.html}" id="links_tablas">Home</a>
+            <a href="@{/templates/materiales.html}" id="links_tablas">Materiales</a>
+            <a href="@{/templates/pedidos.html}" id="links_tablas">Pedidos</a>
+            <a href="@{/templates/productos.html}" id="links_tablas">Productos</a>
+            <a href="@{/templates/proveedores.html}" id="links_tablas">Proveedores</a>
+            <a href="@{/templates/usuarios.html}" id="links_tablas">Usuarios</a>
         </div>
     </aside>
     <main>
