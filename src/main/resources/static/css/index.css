@@ -28,7 +28,7 @@ aside{
 #logo{
     margin-top: 10px;
     width: 250px;
-    height: 90px;
+    height: 200px;
     background-image: url(/img/logo.png);
     background-size:contain;
     background-position: center;
@@ -43,8 +43,8 @@ aside{
     border-bottom: 2px gray solid;
 }
 #foto_perfil{
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
 }
 #nomb_usuario{
     margin-top: 40px;
