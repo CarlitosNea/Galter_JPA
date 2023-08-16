@@ -25,12 +25,12 @@ public class  Ctrldr_Inicio {
         else {
             System.out.println("Usuario no encontrado");
         }
-        return  "index2";
+        return  "index";
     }
 
-    @GetMapping("/index2")
+    @GetMapping("/index")
     public String index2Page() {
-        return "index2";
+        return "index";
     }
 
     @GetMapping("/productos")

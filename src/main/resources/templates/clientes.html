@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/static/scripts/clientes.js"></script>
-    <link rel="stylesheet" href="/static/styles/clientes.css">
+    <link rel="stylesheet" th:href="@{/css/clientes.css}">
     <title>Clientes Galter</title>
 </head>
 <body>
@@ -17,12 +17,12 @@
             <a href="" id="nomb_usuario">Nombre Usuario</a>
         </div>
         <div id="menu_tablas">
-            <a href="/templates/index.html" id="links_tablas">Home</a>
-            <a href="/templates/materiales.html" id="links_tablas">Materiales</a>
-            <a href="/templates/pedidos.html" id="links_tablas">Pedidos</a>
-            <a href="/templates/productos.html" id="links_tablas">Productos</a>
-            <a href="/templates/proveedores.html" id="links_tablas">Proveedores</a>
-            <a href="/templates/usuarios.html" id="links_tablas">Usuarios</a>
+            <a th:href="@{/index}" id="links_tablas">Home</a>
+            <a th:href="@{/materiales}" id="links_tablas">Materiales</a>
+            <a th:href="@{/pedidos}" id="links_tablas">Pedidos</a>
+            <a th:href="@{/productos}" id="links_tablas">Productos</a>
+            <a th:href="@{/proveedores}" id="links_tablas">Proveedores</a>
+            <a th:href="@{/usuarios}" id="links_tablas">Usuarios</a>
         </div>
     </aside>
     <main>
