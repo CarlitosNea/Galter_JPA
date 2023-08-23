@@ -3,27 +3,21 @@ package com.example.ProyectoGalter.Controlador;
 import com.example.ProyectoGalter.Entidad.User;
 import com.example.ProyectoGalter.Servicio.Service_User;
 import com.example.ProyectoGalter.Servicio.Service_Usuario;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Map;
 
-
 @Controller
-public class  Ctrldr_Inicio {
+public class Ctrldr_Inicio {
 
     Service_User user_service;
     Service_Usuario usu_service;
 
-    public Ctrldr_Inicio(Service_User user_service, Service_Usuario usu_service){
+    public Ctrldr_Inicio(Service_Usuario usu_service, Service_User user_service){
         this.user_service = user_service;
         this.usu_service = usu_service;
     }
@@ -36,9 +30,9 @@ public class  Ctrldr_Inicio {
             model.addAttribute("user",user);
 
             if (user.getRol().equals("admin")){
-                return "redirect:/index.html";
+                return "index";
             }else{
-                return "redirect:/indexE.html";
+                return "indexE";
             }
         }
         else {

@@ -40,7 +40,7 @@ public class Service_User {
             String nickname = (String) dataUser.get("nickname");
             String img = (String) dataUser.get("picture");
             String auth_id = (String) dataUser.get("sub");
-            if(repo_usu.findByCorreo(email).getTipo_usuario() == 1){
+            if(repo_usu.findByCorreoUsuario(email).getTipo_usuario() == 1){
                 rol = "admin";
             }else {
                 rol = "empleado";

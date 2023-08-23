@@ -56,7 +56,7 @@ public class Service_Usuario {
 
     public Usuario usuarioCorreo(String correo_usuario){
         Usuario usu = null;
-        usu=repocitorio.findByCorreo(correo_usuario);
+        usu=repocitorio.findByCorreoUsuario(correo_usuario);
         return usu;
     }
 

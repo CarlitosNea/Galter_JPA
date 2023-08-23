@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 public class Ctrldr_User {
 
@@ -23,8 +24,8 @@ public class Ctrldr_User {
     public User user(@AuthenticationPrincipal OidcUser principal){
         System.out.println(principal.getClaims());
         String email = (String) principal.getClaims().get("email");
-        User user1 = this.user_service.buscarEmail(email);
-        return user1;
+        User user = this.user_service.buscarEmail(email);
+        return user;
     }
 
 }

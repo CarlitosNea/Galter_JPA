@@ -21,7 +21,7 @@ public class Usuario {
     private String apellidos_usuario;
 
     @Column(unique = true,length = 50)
-    private String correo_usuario;
+    private String correoUsuario;
 
     @Column(nullable = false)
     private int tipo_usuario;
@@ -35,11 +35,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String codi_usuario, String nombres_usuario, String apellidos_usuario, String correo_usuario, int tipo_usuario, Set<Pedido> pedido) {
+    public Usuario(String codi_usuario, String nombres_usuario, String apellidos_usuario, String correoUsuario, int tipo_usuario, Set<Pedido> pedido) {
         this.codi_usuario = codi_usuario;
         this.nombres_usuario = nombres_usuario;
         this.apellidos_usuario = apellidos_usuario;
-        this.correo_usuario = correo_usuario;
+        this.correoUsuario = correoUsuario;
         this.tipo_usuario = tipo_usuario;
         this.pedido = pedido;
     }
@@ -71,12 +71,12 @@ public class Usuario {
         this.apellidos_usuario = apellidos_usuario;
     }
 
-    public String getCorreo_usuario() {
-        return correo_usuario;
+    public String getCorreoUsuario() {
+        return correoUsuario;
     }
 
-    public void setCorreo_usuario(String correo_usuario) {
-        this.correo_usuario = correo_usuario;
+    public void setCorreoUsuario(String correoUsuario) {
+        this.correoUsuario = correoUsuario;
     }
 
     public int getTipo_usuario() {
@@ -104,7 +104,7 @@ public class Usuario {
                 "codi_usuario='" + codi_usuario + '\'' +
                 ", nombres_usuario='" + nombres_usuario + '\'' +
                 ", apellidos_usuario='" + apellidos_usuario + '\'' +
-                ", correo_usuario='" + correo_usuario + '\'' +
+                ", correo_usuario='" + correoUsuario + '\'' +
                 ", tipo_usuario=" + tipo_usuario +
                 ", pedido=" + pedido +
                 '}';
