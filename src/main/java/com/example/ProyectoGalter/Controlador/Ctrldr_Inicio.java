@@ -1,5 +1,8 @@
 package com.example.ProyectoGalter.Controlador;
 
+import com.example.ProyectoGalter.Entidad.User;
+import com.example.ProyectoGalter.Servicio.Service_User;
+import com.example.ProyectoGalter.Servicio.Service_Usuario;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -17,19 +20,35 @@ import java.util.Map;
 @Controller
 public class  Ctrldr_Inicio {
 
+    Service_User user_service;
+    Service_Usuario usu_service;
+
+    public Ctrldr_Inicio(Service_User user_service, Service_Usuario usu_service){
+        this.user_service = user_service;
+        this.usu_service = usu_service;
+    }
+
     @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal){
         if (principal != null){
             System.out.println(principal.getClaims());
+            User user = this.user_service.getCrearUser(principal.getClaims());
+            model.addAttribute("user",user);
+
+            if (user.getRol().equals("admin")){
+                return "redirect:/index.html";
+            }else{
+                return "redirect:/indexE.html";
+            }
         }
         else {
-            System.out.println("Usuario no encontrado");
+            return  "login";
         }
-        return  "index";
+
     }
 
     @GetMapping("/index")
-    public String index2Page() {
+    public String indexPage() {
         return "index";
     }
 
@@ -60,6 +79,46 @@ public class  Ctrldr_Inicio {
     @GetMapping("/usuarios")
     public String usuariosPage() {
         return "usuarios";
+    }
+
+
+    @GetMapping("/indexE")
+    public String indexEPage() {
+        return "indexE";
+    }
+
+    @GetMapping("/productosE")
+    public String productosEPage() {
+        return "productosE";
+    }
+
+    @GetMapping("/clientesE")
+    public String clientesEPage() {
+        return "clientesE";
+    }
+
+    @GetMapping("/materialesE")
+    public String materialesEPage() {return "materialesE";}
+
+
+    @GetMapping("/pedidosE")
+    public String pedidosEPage() {
+        return "pedidosE";
+    }
+
+    @GetMapping("/proveedoresE")
+    public String proveedoresEPage() {
+        return "proveedoresE";
+    }
+
+    @GetMapping("/usuariosE")
+    public String usuariosEPage() {
+        return "usuariosE";
+    }
+
+    @GetMapping("/login")
+    public String loginPage(){
+        return "login";
     }
 
 
