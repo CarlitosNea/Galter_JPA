@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/scripts/clientes.js"></script>
+    <link rel="stylesheet" th:href="@{/css/clientes.css}">
+    <title>Clientes Galter</title>
+</head>
+<body>
+    <aside>
+        <div id="logo"></div>
+        <div id="opc_usuario">
+            <div id="foto_perfil"></div>
+            <a href="" id="nomb_usuario">Nombre Usuario</a>
+        </div>
+        <div id="menu_tablas">
+            <a th:href="@{/index}" id="links_tablas">Home</a>
+            <a th:href="@{/materiales}" id="links_tablas">Materiales</a>
+            <a th:href="@{/pedidos}" id="links_tablas">Pedidos</a>
+            <a th:href="@{/productos}" id="links_tablas">Productos</a>
+            <a th:href="@{/proveedores}" id="links_tablas">Proveedores</a>
+            <a th:href="@{/usuarios}" id="links_tablas">Usuarios</a>
+        </div>
+    </aside>
+    <main>
+        <p id="titulo">CLIENTES</p>
+        <table id="tabla_listar">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+        <section>
+            <fieldset id="fieldset-buscar">
+                <legend>Buscar Pedido</legend>
+                <form id="form_cli_busc">
+                    <div id="sec_inputs">
+                        <p>Id Pedido</p>
+                        <input type="text" id="id_input_buscar">
+                        <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
+                    </div>
+                    
+                </form>
+                <p id="resp_busqueda"></p>
+            </fieldset>
+        </section>
+    </main>
+</body>
+</html>

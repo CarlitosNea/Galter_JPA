@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <title>Home</title>
+</head>
+<body>
+    <div sec:authorize="!isAuthenticated()">
+        <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
+    </div>
+    
+    <aside>
+        <div id="logo"></div>
+        <div id="info_usuario">
+            <img id="foto_perfil" src="/img/usuario2.png" alt="">
+            <p id="nomb_usuario">Nombre Usuario</p>
+            <p id="rol_usuario">Rol</p>
+        </div>
+        <div id="opciones_perfil" sec:authorize="isAuthenticated()">
+            <a href="" id="link_micuenta">Mi cuenta</a>
+            <a href="" id="link_mispedidos">Mis pedidos</a>
+            <a th:href="@{/logout}" id="log_out">Cerrar Sesion</a>
+        </div>
+    </aside>
+    <main>
+        <section>
+            <p id="titulo" >SOFTWARE GALTER</p>
+
+            <div id="tablas">
+                <a th:href="@{/pedidos}" id="pedidos">
+                    <div id="img_pedidos"></div>
+                    <div id="title_pedidos">Pedidos</div>
+                </a>
+                <a th:href="@{/productos}" id="productos">
+                    <div id="img_productos"></div>
+                    <div id="title_productos">Productos</div>
+                </a>
+                <a th:href="@{/materiales}" id="materiales">
+                    <div id="img_materiales"></div>
+                    <div id="title_materiales">Materiales</div>
+                </a>
+                <a th:href="@{/usuarios}" id="usuarios">
+                    <div id="img_usuarios"></div>
+                    <div id="title_usuarios">Usuarios</div>
+                </a>
+                <a th:href="@{/proveedores}" id="proveedores">
+                    <div id="img_proveedores"></div>
+                    <div id="title_proveedores">Proveedores</div>
+                </a>
+                <a th:href="@{/clientes}" id="clientes">
+                    <div id="img_clientes"></div>
+                    <div id="title_clientes">Clientes</div>
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
