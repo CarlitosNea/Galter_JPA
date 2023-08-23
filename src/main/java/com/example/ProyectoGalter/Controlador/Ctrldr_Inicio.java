@@ -1,35 +1,48 @@
 package com.example.ProyectoGalter.Controlador;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
+import com.example.ProyectoGalter.Entidad.User;
+import com.example.ProyectoGalter.Servicio.Service_User;
+import com.example.ProyectoGalter.Servicio.Service_Usuario;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Map;
 
-
 @Controller
-public class  Ctrldr_Inicio {
+public class Ctrldr_Inicio {
+
+    Service_User user_service;
+    Service_Usuario usu_service;
+
+    public Ctrldr_Inicio(Service_Usuario usu_service, Service_User user_service){
+        this.user_service = user_service;
+        this.usu_service = usu_service;
+    }
 
     @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal){
         if (principal != null){
             System.out.println(principal.getClaims());
+            User user = this.user_service.getCrearUser(principal.getClaims());
+            model.addAttribute("user",user);
+
+            if (user.getRol().equals("admin")){
+                return "index";
+            }else{
+                return "indexE";
+            }
         }
         else {
-            System.out.println("Usuario no encontrado");
+            return  "login";
         }
-        return  "index";
+
     }
 
     @GetMapping("/index")
-    public String index2Page() {
+    public String indexPage() {
         return "index";
     }
 
@@ -60,6 +73,46 @@ public class  Ctrldr_Inicio {
     @GetMapping("/usuarios")
     public String usuariosPage() {
         return "usuarios";
+    }
+
+
+    @GetMapping("/indexE")
+    public String indexEPage() {
+        return "indexE";
+    }
+
+    @GetMapping("/productosE")
+    public String productosEPage() {
+        return "productosE";
+    }
+
+    @GetMapping("/clientesE")
+    public String clientesEPage() {
+        return "clientesE";
+    }
+
+    @GetMapping("/materialesE")
+    public String materialesEPage() {return "materialesE";}
+
+
+    @GetMapping("/pedidosE")
+    public String pedidosEPage() {
+        return "pedidosE";
+    }
+
+    @GetMapping("/proveedoresE")
+    public String proveedoresEPage() {
+        return "proveedoresE";
+    }
+
+    @GetMapping("/usuariosE")
+    public String usuariosEPage() {
+        return "usuariosE";
+    }
+
+    @GetMapping("/login")
+    public String loginPage(){
+        return "login";
     }
 
 

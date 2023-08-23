@@ -79,7 +79,7 @@ public class Pedido {
         this.producto_ped = producto_ped;
     }
 
-    public String getUsuario_ped() {return usuario_ped.getNombre_usuario();}
+    public String getUsuario_ped() {return usuario_ped.getNombres_usuario();}
 
     public void setUsuario_ped(Usuario usuario_ped) {
         this.usuario_ped = usuario_ped;
@@ -119,7 +119,7 @@ public class Pedido {
                 "id_pedido='" + id_pedido + '\'' +
                 ", cliente=" + cliente_ped.getNombre_cliente() +
                 ", producto=" + producto_ped.getCodi_prod() +
-                ", usuario=" + usuario_ped.getNombre_usuario() +
+                ", usuario=" + usuario_ped.getNombres_usuario() +
                 ", tiempo_pedido=" + tiempo_pedido +
                 ", fecha_encargo=" + fecha_encargo +
                 ", fecha_entrega=" + fecha_entrega +

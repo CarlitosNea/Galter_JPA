@@ -7,6 +7,15 @@
     <title>Home</title>
 </head>
 <body>
+<!--    <script type="text/javascript">-->
+<!--        $.get("/user", function(data){-->
+<!--            if(data != null){-->
+<!--                $("#nomb_usuario").html(data.nick);-->
+<!--                $("#rol_usuario").html(data.rol);-->
+<!--            }-->
+<!--        })-->
+<!--    </script>-->
+
     <div sec:authorize="!isAuthenticated()">
         <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
     </div>
@@ -14,9 +23,9 @@
     <aside>
         <div id="logo"></div>
         <div id="info_usuario">
-            <img id="foto_perfil" src="/img/usuario2.png" alt="">
-            <p id="nomb_usuario">Nombre Usuario</p>
-            <p id="rol_usuario">Rol</p>
+            <img id="foto_perfil" th:src="${user.getImg()}" alt="">
+            <p id="nomb_usuario" th:text = "${user.getNickname()}"></p>
+            <p id="rol_usuario" th:text = "${user.getRol()}"></p>
         </div>
         <div id="opciones_perfil" sec:authorize="isAuthenticated()">
             <a href="" id="link_micuenta">Mi cuenta</a>
