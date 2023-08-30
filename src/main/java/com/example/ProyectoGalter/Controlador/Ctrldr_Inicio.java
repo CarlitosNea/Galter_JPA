@@ -71,7 +71,9 @@ public class Ctrldr_Inicio {
     }
 
     @GetMapping("/usuarios")
-    public String usuariosPage() {
+    public String usuariosPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "usuarios";
     }
 
