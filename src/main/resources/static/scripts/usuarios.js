@@ -10,20 +10,22 @@ $(document).ready(function(){
                 //encabezado
                 let encabezado = $('<tr></tr>');
                 encabezado.append('<th>Codigo</th>');
-                encabezado.append('<th>Nombre</th>');
+                encabezado.append('<th>Nombres</th>');
+                encabezado.append('<th>Apellidos</th>');
                 encabezado.append('<th>Correo</th>');
-                encabezado.append('<th>Contraseña</th>');
                 encabezado.append('<th>Tipo</th>');
+                encabezado.append('<th></th>');
                 
                 tabla.append(encabezado);
                 // Agregamos los datos a cada fila de la tabla
                 for (let i = 0; i < res.length; i++) {
-                    let fila = $('<tr></tr>');
+                    let fila = $('<tr id="'+ res[i].codi_usuario +'"></tr>');
                     fila.append('<td>' + res[i].codi_usuario + '</td>');
-                    fila.append('<td>' + res[i].nombre_usuario + '</td>');
-                    fila.append('<td>' + res[i].correo_usuario + '</td>');
-                    fila.append('<td>' + res[i].pass_usuario + '</td>');
+                    fila.append('<td>' + res[i].nombres_usuario + '</td>');
+                    fila.append('<td>' + res[i].apellidos_usuario + '</td>');
+                    fila.append('<td>' + res[i].correoUsuario + '</td>');
                     fila.append('<td>' + res[i].tipo_usuario + '</td>');
+                    fila.append('<td><button id="eliminarBtn">Eliminar</button></td>');
                     tabla.append(fila);
                 }
             }
@@ -99,14 +101,16 @@ $(document).ready(function(){
     });
 
 
-    $('#eliminar').on('click', function() {
-        let dato = $('#id_input_delete').val();
+    $('#eliminarBtn').on('click', function() {
+        let fila = $(this).closest("tr");
+        let dato = fila.data("Codigo");
         $.ajax({
             url: "http://localhost:8080/eliminarUsuario/" + dato,
             type: "DELETE",
             dataType: "json", // Corregido: dataType en minúscula
                 success: function(respuesta) {
                     if (respuesta) {
+                        fila.remove()
                         alert("Eliminado exitosamente");
                     } else {
                         alert("No existe el dato");

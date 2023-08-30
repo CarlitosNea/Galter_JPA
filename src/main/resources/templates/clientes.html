@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +13,8 @@
     <aside>
         <div id="logo"></div>
         <div id="opc_usuario">
-            <div id="foto_perfil"></div>
-            <a href="" id="nomb_usuario">Nombre Usuario</a>
+            <img id="foto_perfil" th:src="${user.getImg()}" alt="">
+            <p id="nomb_usuario" th:text = "${user.getNickname()}"></p>
         </div>
         <div id="menu_tablas">
             <a th:href="@{/index}" id="links_tablas">Home</a>
