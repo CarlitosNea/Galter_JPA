@@ -15,11 +15,6 @@
 <!--            }-->
 <!--        })-->
 <!--    </script>-->
-
-    <div sec:authorize="!isAuthenticated()">
-        <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
-    </div>
-    
     <aside>
         <div id="logo"></div>
         <div id="info_usuario">
