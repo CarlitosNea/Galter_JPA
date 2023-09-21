@@ -42,31 +42,44 @@ public class Ctrldr_Inicio {
     }
 
     @GetMapping("/index")
-    public String indexPage() {
+    public String indexPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "index";
     }
 
     @GetMapping("/productos")
-    public String productosPage() {
+    public String productosPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "productos";
     }
 
     @GetMapping("/clientes")
-    public String clientesPage() {
+    public String clientesPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "clientes";
     }
 
     @GetMapping("/materiales")
-    public String materialesPage() {return "materiales";}
+    public String materialesPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
+        return "materiales";}
 
 
     @GetMapping("/pedidos")
-    public String pedidosPage() {
+    public String pedidosPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "pedidos";
     }
 
     @GetMapping("/proveedores")
-    public String proveedoresPage() {
+    public String proveedoresPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "proveedores";
     }
 
@@ -79,41 +92,58 @@ public class Ctrldr_Inicio {
 
 
     @GetMapping("/indexE")
-    public String indexEPage() {
+    public String indexEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "indexE";
     }
 
     @GetMapping("/productosE")
-    public String productosEPage() {
+    public String productosEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "productosE";
     }
 
     @GetMapping("/clientesE")
-    public String clientesEPage() {
+    public String clientesEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "clientesE";
     }
 
     @GetMapping("/materialesE")
-    public String materialesEPage() {return "materialesE";}
+    public String materialesEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
+        return "materialesE";}
 
 
     @GetMapping("/pedidosE")
-    public String pedidosEPage() {
+    public String pedidosEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "pedidosE";
     }
 
     @GetMapping("/proveedoresE")
-    public String proveedoresEPage() {
+    public String proveedoresEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "proveedoresE";
     }
 
     @GetMapping("/usuariosE")
-    public String usuariosEPage() {
+    public String usuariosEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "usuariosE";
     }
 
     @GetMapping("/login")
-    public String loginPage(){
+    public String loginPage(Model model, @AuthenticationPrincipal OidcUser principal) {
+        User user = this.user_service.getCrearUser(principal.getClaims());
+        model.addAttribute("user",user);
         return "login";
     }
 
