@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/static/scripts/clientes.js"></script>
-    <link rel="stylesheet" th:href="@{/css/clientes.css}">
+    <script src="/scripts/clientes.js"></script>
+    <link rel="stylesheet" href="/styles/clientes.css">
     <title>Clientes Galter</title>
 </head>
 <body>
+    <script type="text/javascript">
+        $.get("/user", function(data){
+        if(data!=null){
+        $("#nomb_usuario").html(data.nick);
+        $("#foto_perfil").html(data.img);
+        $("#rol_usuario").html(data.rol);
+        }
+        });
+    </script>
     <aside>
         <div id="logo"></div>
         <div id="opc_usuario">
-            <img id="foto_perfil" th:src="${user.getImg()}" alt="">
-            <p id="nomb_usuario" th:text = "${user.getNickname()}"></p>
+            <img id="foto_perfil" alt="">
+            <span id="nomb_usuario"></span>
+            <span id="rol_usuario"></span>
         </div>
         <div id="menu_tablas">
             <a th:href="@{/index}" id="links_tablas">Home</a>

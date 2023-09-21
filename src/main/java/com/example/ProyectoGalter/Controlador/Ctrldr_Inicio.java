@@ -23,6 +23,11 @@ public class Ctrldr_Inicio {
     }
 
     @GetMapping("/")
+    public String loginPage( ) {
+        return "login";
+    }
+
+    @GetMapping("/inicio")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal){
         if (principal != null){
             System.out.println(principal.getClaims());
@@ -140,12 +145,6 @@ public class Ctrldr_Inicio {
         return "usuariosE";
     }
 
-    @GetMapping("/login")
-    public String loginPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "login";
-    }
 
 
 
