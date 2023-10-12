@@ -8,6 +8,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -23,6 +24,7 @@ public class Ctrldr_User {
     }
 
     @GetMapping("/user")
+    @ResponseBody
     public User user(@AuthenticationPrincipal OidcUser principal){
         System.out.println(principal.getClaims());
         String email = (String) principal.getClaims().get("email");
@@ -30,10 +32,5 @@ public class Ctrldr_User {
         return user;
     }
 
-    @PostMapping("/logout")
-    public String logout(HttpServletRequest request) {
-        request.getSession().invalidate();
-        return "index";
-    }
 
 }

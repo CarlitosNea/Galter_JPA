@@ -23,11 +23,6 @@ public class Ctrldr_Inicio {
     }
 
     @GetMapping("/")
-    public String loginPage( ) {
-        return "login";
-    }
-
-    @GetMapping("/inicio")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal){
         if (principal != null){
             System.out.println(principal.getClaims());
@@ -35,120 +30,20 @@ public class Ctrldr_Inicio {
             model.addAttribute("user",user);
 
             if (user.getRol().equals("admin")){
-                return "index";
+                return "redirect:/index.html";
             }else{
-                return "indexE";
+                return "redirect:/indexE.html";
             }
         }
         else {
-            return  "login";
+            return "redirect:/login";
         }
 
     }
 
-    @GetMapping("/index")
-    public String indexPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "index";
+    @GetMapping("/login")
+    public String login() {
+        return "redirect:/http://localhost:8080/oauth2/authorization/auth0";
     }
-
-    @GetMapping("/productos")
-    public String productosPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "productos";
-    }
-
-    @GetMapping("/clientes")
-    public String clientesPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "clientes";
-    }
-
-    @GetMapping("/materiales")
-    public String materialesPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "materiales";}
-
-
-    @GetMapping("/pedidos")
-    public String pedidosPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "pedidos";
-    }
-
-    @GetMapping("/proveedores")
-    public String proveedoresPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "proveedores";
-    }
-
-    @GetMapping("/usuarios")
-    public String usuariosPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "usuarios";
-    }
-
-
-    @GetMapping("/indexE")
-    public String indexEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "indexE";
-    }
-
-    @GetMapping("/productosE")
-    public String productosEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "productosE";
-    }
-
-    @GetMapping("/clientesE")
-    public String clientesEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "clientesE";
-    }
-
-    @GetMapping("/materialesE")
-    public String materialesEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "materialesE";}
-
-
-    @GetMapping("/pedidosE")
-    public String pedidosEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "pedidosE";
-    }
-
-    @GetMapping("/proveedoresE")
-    public String proveedoresEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "proveedoresE";
-    }
-
-    @GetMapping("/usuariosE")
-    public String usuariosEPage(Model model, @AuthenticationPrincipal OidcUser principal) {
-        User user = this.user_service.getCrearUser(principal.getClaims());
-        model.addAttribute("user",user);
-        return "usuariosE";
-    }
-
-
-
-
-    // Metodos para llamar datos del usuario
-
 
 }

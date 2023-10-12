@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/static/scripts/clientes.js"></script>
-    <link rel="stylesheet" th:href="@{/css/clientes.css}">
+    <script src="/scripts/clientes.js"></script>
+    <link rel="stylesheet" href="/styles/clientes.css">
     <title>Clientes Galter</title>
 </head>
 <body>
+    <script type="text/javascript">
+        $.get("/user", function(data){
+        if(data!=null){
+        $("#nomb_usuario").html(data.nick);
+        $("#foto_perfil").html(data.img);
+        $("#rol_usuario").html(data.rol);
+        }
+        });
+    </script>
     <aside>
         <div id="logo"></div>
         <div id="info_usuario">
-            <img id="foto_perfil" src="/img/usuario2.png" alt="">
-            <p id="nomb_usuario" th:text = "${user.getNickname()}"></p>
-            <p id="rol_usuario" th:text = "${user.getRol()}"></p>
+            <img id="foto_perfil" alt="">
+            <p id="nomb_usuario"></p>
+            <p id="rol_usuario"></p>
         </div>
         <div id="menu_tablas">
-            <a th:href="@{/index}" id="links_tablas">Home</a>
-            <a th:href="@{/materiales}" id="links_tablas">Materiales</a>
-            <a th:href="@{/pedidos}" id="links_tablas">Pedidos</a>
-            <a th:href="@{/productos}" id="links_tablas">Productos</a>
-            <a th:href="@{/proveedores}" id="links_tablas">Proveedores</a>
-            <a th:href="@{/usuarios}" id="links_tablas">Usuarios</a>
+            <a href="/indexE.html" id="links_tablas">Home</a>
+            <a href="/materialesE.html" id="links_tablas">Materiales</a>
+            <a href="/pedidosE.html" id="links_tablas">Pedidos</a>
+            <a href="/productosE.html" id="links_tablas">Productos</a>
+            <a href="/proveedoresE.html" id="links_tablas">Proveedores</a>
+            <a href="/usuariosE.html" id="links_tablas">Usuarios</a>
         </div>
     </aside>
     <main>
@@ -39,7 +48,7 @@
                     <div id="sec_inputs">
                         <p>Id Pedido</p>
                         <input type="text" id="id_input_buscar">
-                        <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
+                        <button type="submit" id="buscar">Buscar</button>
                     </div>
                     
                 </form>
