@@ -23,16 +23,16 @@
         <div id="logo"></div>
         <div id="opc_usuario">
             <img id="foto_perfil" alt="">
-            <span id="nomb_usuario"></span>
-            <span id="rol_usuario"></span>
+            <p id="nomb_usuario"></p>
+            <p id="rol_usuario"></p>
         </div>
         <div id="menu_tablas">
-            <a th:href="@{/index}" id="links_tablas">Home</a>
-            <a th:href="@{/materiales}" id="links_tablas">Materiales</a>
-            <a th:href="@{/pedidos}" id="links_tablas">Pedidos</a>
-            <a th:href="@{/productos}" id="links_tablas">Productos</a>
-            <a th:href="@{/proveedores}" id="links_tablas">Proveedores</a>
-            <a th:href="@{/usuarios}" id="links_tablas">Usuarios</a>
+            <a href="/index.html" id="links_tablas">Home</a>
+            <a href="/materiales.html" id="links_tablas">Materiales</a>
+            <a href="/pedidos.html" id="links_tablas">Pedidos</a>
+            <a href="/productos.html" id="links_tablas">Productos</a>
+            <a href="/proveedores.html" id="links_tablas">Proveedores</a>
+            <a href="/usuarios.html" id="links_tablas">Usuarios</a>
         </div>
     </aside>
     <main>
@@ -48,7 +48,7 @@
                     <div id="sec_inputs">
                         <p>Id Pedido</p>
                         <input type="text" id="id_input_buscar">
-                        <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
+                        <button type="submit" id="buscar">Buscar</button>
                     </div>
                     
                 </form>
@@ -78,7 +78,7 @@
                             <label for="">Direccion Cliente</label>
                             <input type="text" id="direccion_input_novo">
                         </div>
-                        <button type="submit" class="btn btn-dark" id="enviar">Enviar</button>
+                        <button type="submit" id="enviar">Enviar</button>
                     </form>
                     <p id="resp_enviar"></p>
             </fieldset>
@@ -106,7 +106,7 @@
                             <label for="">Confirmar Direccion</label>
                             <input type="text" id="direccion_input_act">
                         </div>
-                        <button type="submit" class="btn btn-dark" id="actualizar">Actualizar</button>
+                        <button type="submit" id="actualizar">Actualizar</button>
                     </form>
                     <p id="resp_enviar"></p>
             </fieldset>
@@ -118,7 +118,7 @@
                         <label for="">Codigo Cliente</label>
                         <input type="text" id="id_input_delete">
                     </div>
-                    <button type="submit" class="btn btn-dark" id="eliminar">Eliminar</button>
+                    <button type="submit" id="eliminar">Eliminar</button>
                 </form>
                 <p id="resp_delete"></p>
             </fieldset>

@@ -1,27 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" href="/styles/index.css">
+    
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+ -->
+    <script src="/scripts/calculadora.js"></script>
     <title>Home</title>
 </head>
 <body>
-    <div sec:authorize="!isAuthenticated()">
-        <a th:href="@{/oauth2/authorization/auth0}">Log In</a>
-    </div>
-    
+    <script type="text/javascript">
+        $.get("/user", function(data){
+        if(data!=null){
+        $("#nomb_usuario").html(data.nick);
+        $("#foto_perfil").html(data.img);
+        $("#rol_usuario").html(data.rol);
+        }
+        });
+    </script>
     <aside>
         <div id="logo"></div>
         <div id="info_usuario">
-            <img id="foto_perfil" src="/img/usuario2.png" alt="">
-            <p id="nomb_usuario" th:text = "${user.getNickname()}"></p>
-            <p id="rol_usuario" th:text = "${user.getRol()}"></p>
+            <img id="foto_perfil" alt="">
+            <p id="nomb_usuario"></p>
+            <p id="rol_usuario"></p>
         </div>
-        <div id="opciones_perfil" sec:authorize="isAuthenticated()">
-            <a href="" id="link_micuenta">Mi cuenta</a>
+        <div id="opciones_perfil">
+            <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#calculadora" id="link_calculadora">Calculadora</a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="calculadora" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Calculadora de Pedidos</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form class="modal-body">
+                                <div id="sec_inputs">
+                                    <p>Codigo del Producto</p>
+                                    <select name="" id="lista_prod"></select>
+                                </div>
+                                <div id="sec_inputs">
+                                    <p>Cantidad de Piezas</p>
+                                    <input type="number" id="cant_piezas">
+                                </div>
+                            
+                                <div id="sec_outputs">
+                                    <p>Codigo del Material:</p>
+                                    <p id="codi_mate"></p>
+                                </div>
+                                <div id="sec_outputs">
+                                    <p>Cantidad del Material:</p>
+                                    <p id="cant_mate"></p>
+                                </div>
+                                <div id="sec_outputs">
+                                    <p>Tiempo de Produccion:</p>
+                                    <p id="time_pedido"></p>
+                                </div>
+                                <div id="sec_outputs">
+                                    <p>Valor del Pedido:</p>
+                                    <p id="precio_pedido"></p>
+                                </div>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="submit" id="calcular">Calcular</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+
             <a href="" id="link_mispedidos">Mis pedidos</a>
-            <a th:href="@{/logout}" id="log_out">Cerrar Sesion</a>
+            <a href="" id="log_out">Cerrar Sesion</a>
         </div>
     </aside>
     <main>
@@ -29,27 +84,27 @@
             <p id="titulo" >SOFTWARE GALTER</p>
 
             <div id="tablas">
-                <a th:href="@{/pedidos}" id="pedidos">
+                <a href="/pedidosE.html" id="pedidos">
                     <div id="img_pedidos"></div>
                     <div id="title_pedidos">Pedidos</div>
                 </a>
-                <a th:href="@{/productos}" id="productos">
+                <a href="/productosE.html" id="productos">
                     <div id="img_productos"></div>
                     <div id="title_productos">Productos</div>
                 </a>
-                <a th:href="@{/materiales}" id="materiales">
+                <a href="/materialesE.html" id="materiales">
                     <div id="img_materiales"></div>
                     <div id="title_materiales">Materiales</div>
                 </a>
-                <a th:href="@{/usuarios}" id="usuarios">
+                <a href="/usuariosE.html" id="usuarios">
                     <div id="img_usuarios"></div>
                     <div id="title_usuarios">Usuarios</div>
                 </a>
-                <a th:href="@{/proveedores}" id="proveedores">
+                <a href="/proveedoresE.html" id="proveedores">
                     <div id="img_proveedores"></div>
                     <div id="title_proveedores">Proveedores</div>
                 </a>
-                <a th:href="@{/clientes}" id="clientes">
+                <a href="/clientesE.html" id="clientes">
                     <div id="img_clientes"></div>
                     <div id="title_clientes">Clientes</div>
                 </a>

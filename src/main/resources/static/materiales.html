@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/static/scripts/materiales.js"></script>
-    <link rel="stylesheet" th:href="@{/css/materiales.css}">
+    <script src="/scripts/materiales.js"></script>
+    <link rel="stylesheet" href="/styles/materiales.css">
     <title>Materiales Galter</title>
 </head>
 <body>
+    <script type="text/javascript">
+        $.get("/user", function(data){
+        if(data!=null){
+        $("#nomb_usuario").html(data.nick);
+        $("#foto_perfil").html(data.img);
+        $("#rol_usuario").html(data.rol);
+        }
+        });
+    </script>
         <aside>
             <div id="logo"></div>
-            <div id="opc_usuario">
-                <img id="foto_perfil" th:src="${user.getImg()}" alt="">
-                <p id="nomb_usuario" th:text = "${user.getNickname()}"></p>
+            <div id="info_usuario">
+                <img id="foto_perfil" alt="">
+                <p id="nomb_usuario"></p>
+                <p id="rol_usuario"></p>
             </div>
             <div id="menu_tablas">
-                <a th:href="@{/index}" id="links_tablas">Home</a>
-                <a th:href="@{/clientes}" id="links_tablas">Clientes</a>
-                <a th:href="@{/pedidos}" id="links_tablas">Pedidos</a>
-                <a th:href="@{/productos}" id="links_tablas">Productos</a>
-                <a th:href="@{/proveedores}" id="links_tablas">Proveedores</a>
-                <a th:href="@{/usuarios}" id="links_tablas">Usuarios</a>
+                <a href="/index.html" id="links_tablas">Home</a>
+                <a href="/clientes.html" id="links_tablas">Clientes</a>
+                <a href="/pedidos.html" id="links_tablas">Pedidos</a>
+                <a href="/productos.html" id="links_tablas">Productos</a>
+                <a href="/proveedores.html" id="links_tablas">Proveedores</a>
+                <a href="/usuarios.html" id="links_tablas">Usuarios</a>
             </div>
         </aside>
         <main>
@@ -38,7 +48,7 @@
                         <div id="sec_inputs">
                             <p>Id Material</p>
                             <input type="text" id="id_input_buscar">
-                            <button type="submit" class="btn btn-dark" id="buscar">Buscar</button>
+                            <button type="submit" id="buscar">Buscar</button>
                         </div>
                         
                     </form>
@@ -64,7 +74,7 @@
                             <label>Proveedor</label>
                             <select name="prov_input_novo" id="prov_input_novo"></select>
                         </div>
-                        <button type="submit" class="btn btn-dark" id="enviar">Enviar</button>
+                        <button type="submit" id="enviar">Enviar</button>
                     </form>
                     <p id="resp_enviar"></p>
                 </fieldset>
@@ -88,7 +98,7 @@
                             <label>Confirmar Proveedor</label>
                             <select name="prov_input_act" id="prov_input_act"></select>
                         </div>
-                        <button type="submit" class="btn btn-dark" id="actualizar">Actualizar</button>
+                        <button type="submit" id="actualizar">Actualizar</button>
                     </form>
                     <p id="resp_enviar"></p>
                 </fieldset>
@@ -100,7 +110,7 @@
                             <label for="">Id Material</label>
                             <input type="text" id="id_input_delete">
                         </div>
-                        <button type="submit" class="btn btn-dark" id="eliminar">Eliminar</button>
+                        <button type="submit" id="eliminar">Eliminar</button>
                     </form>
                     <p id="resp_delete"></p>
                 </fieldset>
