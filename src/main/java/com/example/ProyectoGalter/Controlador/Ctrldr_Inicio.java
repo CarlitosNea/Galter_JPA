@@ -3,6 +3,7 @@ package com.example.ProyectoGalter.Controlador;
 import com.example.ProyectoGalter.Entidad.User;
 import com.example.ProyectoGalter.Servicio.Service_User;
 import com.example.ProyectoGalter.Servicio.Service_Usuario;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
@@ -44,6 +45,12 @@ public class Ctrldr_Inicio {
     @GetMapping("/login")
     public String login() {
         return "redirect:/http://localhost:8080/oauth2/authorization/auth0";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        // Redirige al usuario a la URL de logout proporcionada por Auth0
+        return "redirect:https://dev-kzcvxumieqdlk3zf.us.auth0.com/v2/logout?returnTo=login&client_id=gjKUfA8tXSUF87p7ekS2xK4gJxMbOuFF";
     }
 
 }
