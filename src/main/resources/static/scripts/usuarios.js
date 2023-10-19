@@ -14,7 +14,6 @@ $(document).ready(function(){
                 encabezado.append('<th>Apellidos</th>');
                 encabezado.append('<th>Correo</th>');
                 encabezado.append('<th>Tipo</th>');
-                encabezado.append('<th></th>');
                 
                 tabla.append(encabezado);
                 // Agregamos los datos a cada fila de la tabla
@@ -25,7 +24,6 @@ $(document).ready(function(){
                     fila.append('<td>' + res[i].apellidos_usuario + '</td>');
                     fila.append('<td>' + res[i].correoUsuario + '</td>');
                     fila.append('<td>' + res[i].tipo_usuario + '</td>');
-                    fila.append('<td><button id="eliminarBtn">Eliminar</button></td>');
                     tabla.append(fila);
                 }
             }

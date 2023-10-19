@@ -4,20 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/scripts/productos.js"></script>
     <link rel="stylesheet" href="/styles/productos.css">
     <title>Productos Galter</title>
 </head>
 <body>
-    <script type="text/javascript">
-        $.get("/user", function(data){
-        if(data!=null){
-        $("#nomb_usuario").html(data.nick);
-        $("#foto_perfil").html(data.img);
-        $("#rol_usuario").html(data.rol);
-        }
-        });
-    </script>
     <aside>
         <div id="logo"></div>
         <div id="info_usuario">
@@ -54,5 +44,15 @@
             </fieldset>
         </section>
     </main>
+    <script type="text/javascript">
+        $.get("/user", function(data){
+            if(data!=null){
+                $("#nomb_usuario").html(data.nickname);
+                $("#foto_perfil").attr("src", data.img);
+                $("#rol_usuario").html(data.rol);
+            }
+        });
+    </script>
+    <script src="/scripts/productos.js"></script>
 </body>
 </html>

@@ -2,25 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/styles/index.css">
-    
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
- -->
-    <script src="/scripts/calculadora.js"></script>
     <title>Home</title>
 </head>
 <body>
-    <script type="text/javascript">
-        $.get("/user", function(data){
-        if(data!=null){
-        $("#nomb_usuario").html(data.nick);
-        $("#foto_perfil").html(data.img);
-        $("#rol_usuario").html(data.rol);
-        }
-        });
-    </script>
     <aside>
         <div id="logo"></div>
         <div id="info_usuario">
@@ -29,20 +17,23 @@
             <p id="rol_usuario"></p>
         </div>
         <div id="opciones_perfil">
-            <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#calculadora" id="link_calculadora">Calculadora</a>
+
+            
+
+            <a href="" class="open-modal" data-open="modal1" id="link_calculadora">Calculadora</a>
 
                 <!-- Modal -->
-                <div class="modal fade" id="calculadora" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal" id="modal1">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Calculadora de Pedidos</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form class="modal-body">
+                            <header class="modal-header">
+                                <p id="exampleModalLabel">Calculadora de Pedidos</p>
+                                <button class="close-modal" aria-label="close modal" data-close>✕</button>
+                            </header>
+                            <form>
                                 <div id="sec_inputs">
                                     <p>Codigo del Producto</p>
-                                    <select name="" id="lista_prod"></select>
+                                    <select id="lista_prod"></select>
                                 </div>
                                 <div id="sec_inputs">
                                     <p>Cantidad de Piezas</p>
@@ -76,7 +67,7 @@
 
 
             <a href="" id="link_mispedidos">Mis pedidos</a>
-            <a href="" id="log_out">Cerrar Sesion</a>
+            <a href="/logout" id="log_out">Cerrar Sesion</a>
         </div>
     </aside>
     <main>
@@ -111,5 +102,16 @@
             </div>
         </section>
     </main>
+
+    <script type="text/javascript">
+        $.get("/user", function(data){
+            if(data!=null){
+                $("#nomb_usuario").html(data.nickname);
+                $("#foto_perfil").attr("src", data.img);
+                $("#rol_usuario").html(data.rol);
+            }
+        });
+    </script>
+    <script src="/scripts/calculadora.js"></script>
 </body>
 </html>
